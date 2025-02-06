@@ -2,6 +2,14 @@
 
 Example notebooks for the 2025 [Polaris](https://polarishub.io/) x [ASAP](https://asapdiscovery.org/) x [OpenADMET](https://openadmet.org/) blind challenge in computational approaches to drug discovery. See the [blog post](https://polarishub.io/blog/antiviral-competition) and [competition page](https://polarishub.io/competitions) for more.
 
+## Installation
+
+You can setup an environment for these examples using conda/mamba/micromamba and the provided [`env.yml`](https://github.com/asapdiscovery/asap-polaris-blind-challenge-examples/blob/main/env.yml):
+
+```bash
+conda install -c conda-forge asap-challenge -f env.yml
+```
+
 ## 💭 Any feedback?
 The goal of this blind challenge is to improve our shared understanding of the strengths and pitfalls of computational methods for potency, ADMET and pose prediction.
 
