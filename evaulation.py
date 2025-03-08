@@ -173,13 +173,10 @@ def eval_admet(preds: dict[str, list], refs: dict[str, list]) -> Tuple[dict[str,
             r2 = r2_score(ref, pred)
         else:
             # clip to a detection limit
-            epsilon = 1e-8
-            pred = np.clip(pred, a_min=epsilon, a_max=None)
-            ref = np.clip(ref, a_min=epsilon, a_max=None)
 
             # transform both log10scale
-            pred_log10s = np.log10(pred)
-            ref_log10s = np.log10(ref)
+            pred_log10s = np.log10(np.clip(pred, a_min=0, a_max=None) + 1)
+            ref_log10s = np.log10(np.clip(ref, a_min=0, a_max=None) + 1)
 
             # compute MALE and R2 in log space
             mae = mean_absolute_error(ref_log10s, pred_log10s)
