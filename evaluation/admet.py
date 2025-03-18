@@ -22,10 +22,7 @@ def evaluate_admet_predictions(
     keys = {"MLM", "HLM", "KSOL", "LogD", "MDR1-MDCKII"}
     logscale_endpts = {"LogD"}
 
-    scores = pd.DataFrame(
-        columns=["Target Label", "Metric", "Score", "Bootstrap Iteration"],
-        index=np.arange(n_bootstrap_samples * len(keys)),
-    )
+    scores = pd.DataFrame(columns=["Target Label", "Metric", "Score", "Bootstrap Iteration"])
 
     for target_label in keys:
         if target_label not in y_pred.keys() or target_label not in y_true.keys():
@@ -95,7 +92,7 @@ def evaluate_all_admet_predictions(
 
     main_leaderboard = add_cld_to_leaderboard(
         leaderboards["aggregated"],
-        scores,
+        all_scores,
         "mean_absolute_error",
         "aggregated",
     )
