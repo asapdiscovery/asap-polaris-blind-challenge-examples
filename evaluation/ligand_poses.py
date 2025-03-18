@@ -1,8 +1,10 @@
+import base64
 import pandas as pd
 from evaluation.bootstrapping import bootstrapping_sampler
 from evaluation.cld import add_cld_to_leaderboard
 from evaluation.utils import mask_flagged, scores_to_leaderboards
-import spyrmsd
+import spyrmsd.molecule
+import spyrmsd.rmsd
 
 import numpy as np
 from rdkit import Chem
@@ -86,7 +88,7 @@ def evaluate_ligand_poses_predictions(
 
 
 def evaluate_all_ligand_pose_predictions(
-    y_true: dict[str, np.ndarray], all_y_pred: dict[str, dict[str, np.ndarray]]
+    y_true: list[Chem.Mol], all_y_pred: dict[str, list[Chem.Mol]]
 ) -> pd.DataFrame:
     """
     Evaluate and rank all submissions
@@ -108,12 +110,12 @@ def evaluate_all_ligand_pose_predictions(
         all_scores = pd.concat([all_scores, scores], ignore_index=True)
 
     leaderboards = scores_to_leaderboards(
-        scores, rank_by="success_rate", ascending=False
+        all_scores, rank_by="success_rate", ascending=False
     )
 
     main_leaderboard = add_cld_to_leaderboard(
         leaderboards["Ligand Pose"],
-        scores,
+        all_scores,
         "success_rate",
         "Ligand Pose",
     )
