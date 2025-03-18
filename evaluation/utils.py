@@ -3,6 +3,7 @@ from typing import Literal
 import numpy as np
 import pandas as pd
 
+
 def mask_nan(y_true: np.ndarray, y_pred: np.ndarray):
     """
     Mask out NaN values.
@@ -22,7 +23,12 @@ def mask_nan(y_true: np.ndarray, y_pred: np.ndarray):
     return y_true, y_pred
 
 
-def mask_flagged(y_true: np.ndarray, y_pred: np.ndarray, task_label: Literal['admet', 'potency', 'ligand-poses'], target_label: str):
+def mask_flagged(
+    y_true: np.ndarray,
+    y_pred: np.ndarray,
+    task_label: Literal["admet", "potency", "ligand-poses"],
+    target_label: str,
+):
     """
     Mask data points that were flagged during the competition and are to be excluded.
 
@@ -39,7 +45,7 @@ def mask_flagged(y_true: np.ndarray, y_pred: np.ndarray, task_label: Literal['ad
     """
     with open(f"evaluation/data/exclusions/{task_label}.json") as fd:
         flagged = json.load(fd)
-    
+
     flagged = flagged[target_label]
     flagged = [int(x["idx"]) for x in flagged]
 
@@ -50,7 +56,7 @@ def mask_flagged(y_true: np.ndarray, y_pred: np.ndarray, task_label: Literal['ad
     return y_true, y_pred
 
 
-def clip_and_log_transform(y: np.ndarray): 
+def clip_and_log_transform(y: np.ndarray):
     """
     Clip to a detection limit and transform to log10 scale.
 
@@ -78,7 +84,7 @@ def scores_to_leaderboards(
 ):
     """
     Convert scores to leaderboards.
-    
+
     Parameters
     ----------
     scores : pd.DataFrame
@@ -91,7 +97,12 @@ def scores_to_leaderboards(
     leaderboards = {}
     for name, group in scores.groupby("Target Label"):
         raw_leaderboard = (
-            group.pivot_table(index=["Method"], columns="Metric", values="Score", aggfunc=["mean", "std"])
+            group.pivot_table(
+                index=["Method"],
+                columns="Metric",
+                values="Score",
+                aggfunc=["mean", "std"],
+            )
             .reset_index()
             .sort_values(by=("mean", rank_by), ascending=ascending)
         )
@@ -100,9 +111,9 @@ def scores_to_leaderboards(
         leaderboard = pd.DataFrame({"Method": raw_leaderboard["Method"]})
 
         for metric in metrics:
-            leaderboard[metric] = raw_leaderboard[[("mean", metric), ("std", metric)]].apply(
-                lambda x: f"{x.iloc[0]:.3f} ± {x.iloc[1]:.3f}", axis=1
-            )
+            leaderboard[metric] = raw_leaderboard[
+                [("mean", metric), ("std", metric)]
+            ].apply(lambda x: f"{x.iloc[0]:.3f} ± {x.iloc[1]:.3f}", axis=1)
 
         leaderboards[name] = leaderboard
 

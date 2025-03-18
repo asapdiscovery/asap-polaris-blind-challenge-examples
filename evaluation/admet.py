@@ -1,20 +1,24 @@
 import pandas as pd
 import numpy as np
-from sklearn.base import r2_score
-from sklearn.metrics import mean_absolute_error, mean_squared_error
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from scipy.stats import pearsonr, spearmanr, kendalltau
 from evaluation.bootstrapping import bootstrapping_sampler
 from evaluation.cld import add_cld_to_leaderboard
-from evaluation.utils import clip_and_log_transform, compute_macro_metrics, mask_flagged, mask_nan, scores_to_leaderboards
+from evaluation.utils import (
+    clip_and_log_transform,
+    compute_macro_metrics,
+    mask_flagged,
+    mask_nan,
+    scores_to_leaderboards,
+)
 
 
 def evaluate_admet_predictions(
     y_true: dict[str, np.ndarray],
     y_pred: dict[str, np.ndarray],
     method_label: str,
-    n_bootstrap_samples: int = 1000
+    n_bootstrap_samples: int = 1000,
 ) -> pd.DataFrame:
-    
     keys = {"MLM", "HLM", "KSOL", "LogD", "MDR1-MDCKII"}
     logscale_endpts = {"LogD"}
 
@@ -37,10 +41,16 @@ def evaluate_admet_predictions(
             refs = clip_and_log_transform(refs)
             pred = clip_and_log_transform(pred)
 
-        for i, ind in enumerate(bootstrapping_sampler(refs.shape[0], n_bootstrap_samples)):
+        for i, ind in enumerate(
+            bootstrapping_sampler(refs.shape[0], n_bootstrap_samples)
+        ):
             collect = {
-                "mean_absolute_error": mean_absolute_error(y_true=refs[ind], y_pred=pred[ind]),
-                "mean_squared_error": mean_squared_error(y_true=refs[ind], y_pred=pred[ind]),
+                "mean_absolute_error": mean_absolute_error(
+                    y_true=refs[ind], y_pred=pred[ind]
+                ),
+                "mean_squared_error": mean_squared_error(
+                    y_true=refs[ind], y_pred=pred[ind]
+                ),
                 "pearsonr": pearsonr(refs[ind], pred[ind])[0],
                 "spearmanr": spearmanr(refs[ind], pred[ind])[0],
                 "r2": r2_score(y_true=refs[ind], y_pred=pred[ind]),
@@ -59,7 +69,9 @@ def evaluate_admet_predictions(
     return scores
 
 
-def evaluate_all_admet_predictions(y_true: dict[str, np.ndarray],all_y_pred: dict[str, dict[str, np.ndarray]]) -> pd.DataFrame:
+def evaluate_all_admet_predictions(
+    y_true: dict[str, np.ndarray], all_y_pred: dict[str, dict[str, np.ndarray]]
+) -> pd.DataFrame:
     """
     Evaluate and rank all submissions
 
@@ -76,8 +88,10 @@ def evaluate_all_admet_predictions(y_true: dict[str, np.ndarray],all_y_pred: dic
     for method_label, y_pred in all_y_pred.items():
         scores = evaluate_admet_predictions(y_true, y_pred, method_label)
         all_scores = pd.concat([all_scores, scores], ignore_index=True)
-    
-    leaderboards = scores_to_leaderboards(all_scores, rank_by="mean_absolute_error", ascending=True)
+
+    leaderboards = scores_to_leaderboards(
+        all_scores, rank_by="mean_absolute_error", ascending=True
+    )
 
     main_leaderboard = add_cld_to_leaderboard(
         leaderboards["aggregated"],

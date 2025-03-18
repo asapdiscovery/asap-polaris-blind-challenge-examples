@@ -16,7 +16,7 @@ def mol_has_3D(mol):
 
     if not mol.GetConformer().Is3D():
         raise ValueError("Molecule is not 3D")
-    
+
 
 def evaluate_ligand_poses_predictions(
     y_pred: list[Chem.Mol],
@@ -31,7 +31,6 @@ def evaluate_ligand_poses_predictions(
     y_true, y_pred = mask_flagged(y_true, y_pred, "ligand-poses", "Ligand Pose")
 
     for pred, refs in zip(y_pred, y_true):
-        
         # Check the input
         mol_has_3D(pred)
         mol_has_3D(refs)
@@ -48,15 +47,23 @@ def evaluate_ligand_poses_predictions(
 
     rmsds = np.asarray(rmsds)
 
-    # The test set included some duplicate inputs. 
+    # The test set included some duplicate inputs.
     # In other words: For certain protein, ligand pairs, there were multiple possible poses.
     # For those duplicates, we keep and evaluate the best pose with the minimal RMSD.
     inputs["RMSD"] = rmsds
-    grouped = inputs.groupby(["CXSMILES", "Chain A Sequence", "Chain B Sequence", "Protein Label"])["RMSD"].min().reset_index()
+    grouped = (
+        inputs.groupby(
+            ["CXSMILES", "Chain A Sequence", "Chain B Sequence", "Protein Label"]
+        )["RMSD"]
+        .min()
+        .reset_index()
+    )
     rmsds = grouped["RMSD"].values
 
     # Evaluate with bootstrapping
-    scores = pd.DataFrame(columns=["Target Label", "Metric", "Score", "Bootstrap Iteration"])
+    scores = pd.DataFrame(
+        columns=["Target Label", "Metric", "Score", "Bootstrap Iteration"]
+    )
 
     for i, ind in enumerate(bootstrapping_sampler(rmsds.shape[0], n_bootstrap_samples)):
         bootstrapped_rmsds = rmsds[ind]
@@ -64,8 +71,13 @@ def evaluate_ligand_poses_predictions(
         n_correct = sum(correct)
         ratio = (n_correct / len(bootstrapped_rmsds)) * 100
 
-        scores.loc[len(scores)] = ["Ligand Pose", "success_rate", ratio , i]
-        scores.loc[len(scores)] = ["Ligand Pose", "mean_rmsd", np.mean(bootstrapped_rmsds), i]
+        scores.loc[len(scores)] = ["Ligand Pose", "success_rate", ratio, i]
+        scores.loc[len(scores)] = [
+            "Ligand Pose",
+            "mean_rmsd",
+            np.mean(bootstrapped_rmsds),
+            i,
+        ]
 
     scores["Test Set"] = "test"
     scores["Method"] = method_label
@@ -73,7 +85,9 @@ def evaluate_ligand_poses_predictions(
     return scores
 
 
-def evaluate_all_ligand_pose_predictions(y_true: dict[str, np.ndarray],all_y_pred: dict[str, dict[str, np.ndarray]]) -> pd.DataFrame:
+def evaluate_all_ligand_pose_predictions(
+    y_true: dict[str, np.ndarray], all_y_pred: dict[str, dict[str, np.ndarray]]
+) -> pd.DataFrame:
     """
     Evaluate and rank all submissions
 
@@ -92,8 +106,10 @@ def evaluate_all_ligand_pose_predictions(y_true: dict[str, np.ndarray],all_y_pre
     for method_label, y_pred in all_y_pred.items():
         scores = evaluate_ligand_poses_predictions(y_true, y_pred, method_label, inputs)
         all_scores = pd.concat([all_scores, scores], ignore_index=True)
-    
-    leaderboards = scores_to_leaderboards(scores, rank_by="success_rate", ascending=False)
+
+    leaderboards = scores_to_leaderboards(
+        scores, rank_by="success_rate", ascending=False
+    )
 
     main_leaderboard = add_cld_to_leaderboard(
         leaderboards["Ligand Pose"],

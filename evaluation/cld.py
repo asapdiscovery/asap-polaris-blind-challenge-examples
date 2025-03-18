@@ -1,5 +1,4 @@
 from string import ascii_lowercase, ascii_uppercase
-import string
 
 import pandas as pd
 from statsmodels.stats.multicomp import pairwise_tukeyhsd
@@ -36,17 +35,17 @@ def cld(comparisons: pd.DataFrame) -> dict[str, str]:
     """
     Compact Letter Display
 
-    Compute the compact letter display using the insert-absorb algorithm. 
+    Compute the compact letter display using the insert-absorb algorithm.
 
-    See the following papers for more information: 
+    See the following papers for more information:
     (1) https://doi.org/10.1016/j.csda.2006.09.035
     (2) https://doi.org/10.1198/1061860043515
 
     Parameters
     ----------
-        comparisons : pd.DataFrame 
+        comparisons : pd.DataFrame
             A DataFrame containing the pairwise comparisons produced by:
-            https://www.statsmodels.org/dev/generated/statsmodels.stats.multicomp.pairwise_tukeyhsd.html 
+            https://www.statsmodels.org/dev/generated/statsmodels.stats.multicomp.pairwise_tukeyhsd.html
     """
     unique_groups = set(comparisons["group_t"].unique())
     unique_groups = unique_groups.union(set(comparisons["group_c"].unique()))
@@ -94,7 +93,6 @@ def cld(comparisons: pd.DataFrame) -> dict[str, str]:
     return {group: sorted(letter) for group, letter in zip(unique_groups, letters)}
 
 
-
 def add_cld_to_leaderboard(
     leaderboard: pd.DataFrame,
     scores: pd.DataFrame,
@@ -121,13 +119,13 @@ def add_cld_to_leaderboard(
     scores = scores[scores["Target Label"] == target_label]
     scores["Score"] = scores["Score"].astype(float)
 
-    # We compared methods using bootstrapping and the Tukey HSD test, presenting results via Compact Letter Display (CLD). 
-    # While acknowledging that bootstrapping likely underestimates variance, 
+    # We compared methods using bootstrapping and the Tukey HSD test, presenting results via Compact Letter Display (CLD).
+    # While acknowledging that bootstrapping likely underestimates variance,
     # we are not aware of better sampling techniques that fit the challenge format.
     stats = pairwise_tukeyhsd(endog=scores["Score"], groups=scores["Method"])
     comparisons = stats.summary_frame()
 
-    # Reassign CLD letters such that the alphabetical ordering 
+    # Reassign CLD letters such that the alphabetical ordering
     # aligns with the ordering of the methods in the leaderboard
 
     letter_mapping = {}
