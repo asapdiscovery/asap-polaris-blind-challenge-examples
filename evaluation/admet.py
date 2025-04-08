@@ -1,7 +1,8 @@
-import pandas as pd
 import numpy as np
+import pandas as pd
+from scipy.stats import kendalltau, pearsonr, spearmanr
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-from scipy.stats import pearsonr, spearmanr, kendalltau
+
 from evaluation.bootstrapping import bootstrapping_sampler
 from evaluation.cld import add_cld_to_leaderboard
 from evaluation.utils import (
@@ -22,7 +23,9 @@ def evaluate_admet_predictions(
     keys = {"MLM", "HLM", "KSOL", "LogD", "MDR1-MDCKII"}
     logscale_endpts = {"LogD"}
 
-    scores = pd.DataFrame(columns=["Target Label", "Metric", "Score", "Bootstrap Iteration"])
+    scores = pd.DataFrame(
+        columns=["Target Label", "Metric", "Score", "Bootstrap Iteration"]
+    )
 
     for target_label in keys:
         if target_label not in y_pred.keys() or target_label not in y_true.keys():
@@ -31,8 +34,8 @@ def evaluate_admet_predictions(
         refs = y_true[target_label]
         pred = y_pred[target_label]
 
-        refs, pred = mask_nan(refs, pred)
         refs, pred = mask_flagged(refs, pred, "admet", target_label)
+        refs, pred = mask_nan(refs, pred)
 
         if target_label not in logscale_endpts:
             refs = clip_and_log_transform(refs)
