@@ -1,7 +1,8 @@
-import pandas as pd
 import numpy as np
+import pandas as pd
+from scipy.stats import kendalltau, pearsonr, spearmanr
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-from scipy.stats import pearsonr, spearmanr, kendalltau
+
 from evaluation.bootstrapping import bootstrapping_sampler
 from evaluation.cld import add_cld_to_leaderboard
 from evaluation.utils import (
@@ -20,7 +21,9 @@ def evaluate_potency_predictions(
 ) -> pd.DataFrame:
     keys = {"pIC50 (SARS-CoV-2 Mpro)", "pIC50 (MERS-CoV Mpro)"}
 
-    scores = pd.DataFrame(columns=["Target Label", "Metric", "Score", "Bootstrap Iteration"])
+    scores = pd.DataFrame(
+        columns=["Target Label", "Metric", "Score", "Bootstrap Iteration"]
+    )
 
     for target_label in keys:
         if target_label not in y_pred.keys() or target_label not in y_true.keys():
@@ -29,8 +32,8 @@ def evaluate_potency_predictions(
         refs = y_true[target_label]
         pred = y_pred[target_label]
 
-        refs, pred = mask_nan(refs, pred)
         refs, pred = mask_flagged(refs, pred, "potency", target_label)
+        refs, pred = mask_nan(refs, pred)
 
         for i, ind in enumerate(
             bootstrapping_sampler(refs.shape[0], n_bootstrap_samples)
