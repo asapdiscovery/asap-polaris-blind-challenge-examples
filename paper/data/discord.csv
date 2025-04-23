@@ -1,0 +1,1019 @@
+﻿Date,Username,User tag,Content,Mentions,link
+"2024-12-03,10:54:09",jj700physics,#0,"Good morning. I wanted to ask about the antiviral-admet-2025. I read the blog post and competition details, but I could not find any info on how the data is curated? By any chance, do you have info on this? I just want to decide if I need to find more data for this competition. Thanks",,
+"2024-12-03,12:54:16",cwognum,#0,"Hi <@533263458486190081> , the data was consistently generated for ASAP through institutions like the Weizmann Institute, the University of Oxford, and industry standard CROs. We thus didn't have to do much curation. 
+
+For the ML-ready datasets that will be made available through the Polaris API, we did the following: 
+- For potency and ADMET, filter out any data points for which the modifier was not ""=""
+- For poses, we prepared the structural data using Spruce (https://www.eyesopen.com/spruce) and aligned them with a reference Mpro, with CONECT records
+
+See the sample datasets, for example: 
+- https://polarishub.io/datasets/asap-discovery/antiviral-potency-2025-sample
+- https://polarishub.io/datasets/asap-discovery/antiviral-ligand-poses-2025-sample
+- https://polarishub.io/datasets/asap-discovery/antiviral-admet-2025-sample
+
+You're free to use any extra data (and we recommend it!). We're curious to see if anyone could've done better than we did, and we had access to other public data as well.",jj700physics#0,
+"2024-12-03,15:46:24",jj700physics,#0,Thank you,cwognum#0,
+"2024-12-08,13:55:06",octonoodle,#0,Regarding the competition...could we use small peptides that can be synthesized in using small molecule synthesis techniques?,,
+"2024-12-08,16:08:43",itstreasonthen.,#0,"<@973225263649411122> the idea is not to design new binders, but rather to predict binding on known binders. I.E given a small molecule SMILES, predict how well it binds.",octonoodle#0,
+"2024-12-08,16:41:14",octonoodle,#0,Yikes...much harder 😅,itstreasonthen.#0,
+"2024-12-08,16:43:55",octonoodle,#0,"Hmm...actually...probably won't have time to do it myself, but GraphCG may be a good way to go here (learn the latent space direction for affinity).",,
+"2025-01-03,17:19:23",brodadaniel,#0,Do you mind looking at the dataset API i keep getting this error AttributeError: 'NoneType' object has no attribute 'is_expired',,
+"2025-01-03,18:48:44",cwognum,#0,"Hey <@786262128612999228> thanks for reaching out. Would you mind filing a bug report on Github? That will prompt you to fill out some additional information which will help the team investigate! 
+
+You can file a bug report here: https://github.com/polaris-hub/polaris/issues",brodadaniel#0,
+"2025-01-09,03:20:55",sladem.,#0,Did you login to Polaris ? I saw a similar message when trying to load data before logging in. .,brodadaniel#0,
+"2025-01-09,12:56:57",brodadaniel,#0,Yes,,
+"2025-01-09,22:28:20",sladem.,#0,OK. Sorry. you probably know more about it than I do! I'm only using Colab with it so far.,brodadaniel#0,
+"2025-01-10,07:08:07",cwognum,#0,Hey <@786262128612999228> - Just a friendly reminder that opening an issue is to best way to get help quickly! There’s a number of reasons that could cause your issue and to fix it we need a bit more info!,brodadaniel#0,
+"2025-01-10,07:22:06",brodadaniel,#0,Ok I will do that today thanks,,
+"2025-01-11,14:40:20",brodadaniel,#0,issue got resolved thanks,cwognum#0,
+"2025-01-13,00:03:13",sagore26_13515,#0,"Hello everyone, I would like to participate in Ligand ADMET challenge, could you please let me know how to register as a participant? Thank you.",,
+"2025-01-13,09:46:50",cwognum,#0,"Hi! No need to register. As long as you have a Polaris account, you can submit your predictions through our Python API! 🧑‍💻 
+
+See https://polarishub.io/competitions for the competition details and https://github.com/asapdiscovery/asap-polaris-blind-challenge-examples for some code examples to get started.",sagore26_13515#0,
+"2025-01-13,12:52:50",sagore26_13515,#0,"Great, Thank you! I will take a look at the competitions page and code.",cwognum#0,
+"2025-01-13,15:20:07",itstreasonthen.,#0,"Hi all, introducing <@1328384613554585613> and myself <@377331431246004225>! We are part of the ASAPDiscovery team behind the competition in collaboration with the wonderful <@&1209587005701357568> folks. We will be able to answer any of your questions here and will also be organising some office hours where you can ask some questions face to face. Watch this space.",itstreasonthen.#0、jenkescheen.#0,
+"2025-01-13,17:13:25",jj700physics,#0,"that's wonderful, thanks. That will be awesome",itstreasonthen.#0,
+"2025-01-13,22:58:16",luispintoc,#0,"Hi all, I get the following error:
+
+HTTPStatusError: Client error '404 Not Found' for url 'https://polarishub.io/api/v2/competition/asap-discovery/antiviral-ligand-poses-2025'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+
+The above exception was the direct cause of the following exception:
+
+PolarisRetrieveArtifactError              Traceback (most recent call last)
+Cell In[12], line 2
+      1 competition_id = ""asap-discovery/antiviral-ligand-poses-2025""
+----> 2 competition = po.load_competition(competition_id)
+
+am I the only one?",,
+"2025-01-14,07:13:59",cwognum,#0,"Hi, sorry you’re running into this and thanks for reporting.
+
+The fastest way to get help is by opening a Github issue here: https://github.com/polaris-hub/polaris/issues This will prompt you to specify some additional information that helps us investigate.
+
+I can’t say for sure based on what you shared, but I suspect it’s because of your Polaris version. Can you confirm you’re on 0.11.0?",luispintoc#0,
+"2025-01-14,10:26:29",luispintoc,#0,Thanks! I was using the 0.8 version,,
+"2025-01-14,16:19:42",muismail90,#0,"Hi everyone, I get this message when trying to login through the API, Am I missing something?",,https://cdn.discordapp.com/attachments/1311539940797972581/1328835966240292925/image.png?ex=680a022e&is=6808b0ae&hm=4984ab51783f53503385bf78263b44955a329db8b193ed8e9c499d53d7d349dc&
+"2025-01-14,16:26:28",cwognum,#0,"Hi! From the screenshot it seems that you're signing in to a dev environment rather than prod (we e.g. don't support Google SSO on prod). Can you confirm the URL you're at? 
+
+The dev environment uses an allowlist, which is why you can't create an account.
+
+I'm not sure how you ended up in a dev environment. That shouldn't happen! Where did you find the link? 😅",muismail90#0,
+"2025-01-14,16:29:52",muismail90,#0,"Thanks, Cas, for your reply. This is the command I used, and the link appears in the screenshot",,https://cdn.discordapp.com/attachments/1311539940797972581/1328838524786708551/image.png?ex=680a0490&is=6808b310&hm=9d41886aef21fe20eafc480e0d2a14d5b69ad418cbdd80c830c987227ae84008&
+"2025-01-14,16:30:28",muismail90,#0,I installed polaris using pip into the environment opencadd,,
+"2025-01-14,16:32:22",cwognum,#0,"Oh, I think I get it. What's the Polaris version? 
+
+```py
+import polaris as po
+print(po.__version__)
+```",,
+"2025-01-14,16:33:22",muismail90,#0,dev,,
+"2025-01-14,16:34:36",muismail90,#0,You are right. I'm in the dev mode. Idk how this happened.,,
+"2025-01-14,16:36:55",cwognum,#0,"I'm pretty sure you've accidentally installed an old (like old-old) version of Polaris. Old enough where we were still using our dev environment. Could you try install version `0.11.0` explicitly? 
+
+For example: 
+```
+pip install polaris=0.11.0
+```
+
+If the issue persists, it would be very helpful if you could create a Github issue.",,
+"2025-01-14,16:39:23",cwognum,#0,"ℹ️  As a general announcement:
+
+If you're facing any technical issue, it's best to file a bug report at https://github.com/polaris-hub/polaris/issues/new?assignees=&labels=bug&projects=&template=bug-report.yml. This will prompt you to fill out some additional information that helps the team investigate the issue. 
+
+Thanks!",,
+"2025-01-14,16:39:36",cwognum,#0,,,
+"2025-01-14,16:40:52",muismail90,#0,Thanks. I now know where the problem is. I will try some mamba/pip installs and will get there soon. Thanks again.,cwognum#0,
+"2025-01-15,06:44:53",ishgirwan,#0,"In the ligand pose challenge, when getting the train test split using `train, test = competition.get_train_test_split()`, is there a way to get the extra data as part of this train and test set?",,
+"2025-01-15,07:27:02",cwognum,#0,"Yes, you can set the `input_cols` field for the `train` object. For example:
+
+```py
+train.input_cols.append(“Protein Structure”)
+```",ishgirwan#0,
+"2025-01-15,09:15:39",ishgirwan,#0,"Thanks Cas, that worked. Is there any reason why the test set doesn't include Protein structure and Complex structure, as we would need them during inference if we use them during training ?",cwognum#0,
+"2025-01-15,10:15:20",cwognum,#0,"That’s a good question! 
+
+For the Complex Structure, the answer is simply that this structure includes the ligand and thus the solution to the task we’re asking you to solve! 😄
+
+For the Protein Structure, the answer is a little more nuanced. The structure of the protein changes based on the ligand that is bound to it. If we were to provide you with the structure of the protein in its bound pose for a given ligand, that would give you additional information about the ligand pose that we’re asking you to predict. This is information you typically don’t have in a real world setting. We’ve therefore formulated the posing challenge as a “blind docking” task, where the ask is to predict the pose based on just the sequence data of the protein and the molecular graph (i.e. the CXSMILES). This is more representative of real-world applications. 
+
+<@1328384613554585613> <@377331431246004225> Please jump in here if you have anything to add!",itstreasonthen.#0、ishgirwan#0、jenkescheen.#0,
+"2025-01-15,10:47:14",ishgirwan,#0,Thanks a lot for clarifying that 🙂,cwognum#0,
+"2025-01-15,12:35:09",jenkescheen.,#0,that's correct! If you would like inspiration for the protein (e.g. if you're not planning to use some sort of folding method) I would recommend looking at the training data proteins (in the case of SARS-CoV-2 Mpro) or at the reference protein to align to (in the case of MERS-CoV Mpro). Pro tip: the PDB database (https://www.rcsb.org/) also contains an additional wealth of knowledge..,cwognum#0,
+"2025-01-15,15:31:55",jonnyhsu,#0,"Just wanted to give a warm welcome to all of the new folks who've joined the channel/Discord recently! If you haven't yet, please head on over to <#1202076404578000946> to quickly introduce yourself. We'd love to learn more about you 🙂",,
+"2025-01-16,03:27:09",bartl88,#0,"Hello, Bart here- for the ADME challenge the links to the experimental protocols are broken?",,
+"2025-01-16,03:29:03",bartl88,#0,,,https://cdn.discordapp.com/attachments/1311539940797972581/1329366797593477230/image.png?ex=6809f64e&is=6808a4ce&hm=87ca813cd11c37285a1b5a92af1788be09208872c064fb5fdab0c5f8d98c38c0&
+"2025-01-16,09:48:18",cwognum,#0,"Good catch, thanks! We've update the links in the README. 
+
+For your convenience: 
+- Mouse Liver Microsomal stability (MLM): https://dx.doi.org/10.17504/protocols.io.5qpvokdb9l4o/v1
+- Human Liver Microsomal stability (HLM): https://dx.doi.org/10.17504/protocols.io.5qpvokdb9l4o/v1
+- Solubility (KSOL): https://dx.doi.org/10.17504/protocols.io.j8nlk8y41l5r/v1
+- LogD: https://dx.doi.org/10.17504/protocols.io.e6nvw14kdlmk/v1
+- Cell permeation (MDR1-MDCKII): https://dx.doi.org/10.17504/protocols.io.n2bvjne6ngk5/v1",bartl88#0,
+"2025-01-19,14:46:26",kunle007,#0,"Hi. I tried loading the dataset using:
+
+```python
+competition = po.load_competition(""asap-discovery/antiviral-potency-2025"")
+```
+and I got the following error:
+
+```python
+Traceback (most recent call last):
+  File ""<stdin>"", line 1, in <module>
+  File ""/opt/anaconda3/envs/polaris/lib/python3.11/site-packages/polaris/loader/load.py"", line 115, in load_competition
+    return client.get_competition(artifact_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ****cut out some part ****
+  File ""/opt/anaconda3/envs/polaris/lib/python3.11/site-packages/zarr/storage.py"", line 3046, in __init__
+    meta = json_loads(self.store[metadata_key])
+                      ~~~~~~~~~~^^^^^^^^^^^^^^
+  File ""/opt/anaconda3/envs/polaris/lib/python3.11/site-packages/polaris/hub/storage.py"", line 351, in __getitem__
+    with handle_s3_errors():
+  File ""/opt/anaconda3/envs/polaris/lib/python3.11/contextlib.py"", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File ""/opt/anaconda3/envs/polaris/lib/python3.11/site-packages/polaris/hub/storage.py"", line 52, in handle_s3_errors
+    raise S3StoreException(f""Error in S3Store: {e}"") from e
+polaris.hub.storage.S3StoreException: Error in S3Store: An error occurred (NotImplemented) when calling the GetObject operation: Header 'x-amz-checksum-mode' with value 'ENABLED' not implemented
+```",,
+"2025-01-19,15:00:18",cwognum,#0,"Hey <@580795206459457556> , thanks for reaching out. This was an issue in an upstream library we use. The solution is to downgrade boto3 to <1.36.0.
+
+See also: https://github.com/polaris-hub/polaris/pull/247
+
+I now realize we didn’t adjust the dependencies in the Conda release, but installing Polaris version 0.11.2 from source or through PyPi should fix the issue since we’ve pinned the version of Boto3.",kunle007#0,
+"2025-01-19,15:21:46",muismail90,#0,"Hi, Kunle. I have a conda env with Python 3.10 and installed polaris using `mamba install -c conda-forge polaris`, then downgraded boto3 using `conda install boto3=1.53` and it worked.",kunle007#0,
+"2025-01-19,19:04:16",luispintoc,#0,"Hi, on the antiviral potency challenge, I see there are 5 data points in both train and test set, will they be removed from the test set in the future?
+
+{'CC(C)[C@H]1C2=C(CCN1C(=O)CC1=CN=CC3=CC=CC=C13)SC=C2 |o1:3|',
+ 'CCC1=CC=C([C@H]2C[C@H](C)CCN2C(=O)CC2=CN=CC3=CC=CC=C23)O1 |o1:6,8|',
+ 'CNC(=O)CN1C[C@]2(C(=O)N(C3=CN=CC4=CC=CC=C34)C[C@H]2CC2CC2)C2=CC(Cl)=CC=C2C1=O |o1:7,22|',
+ 'CO[C@@H](C)CN1C[C@H](C(=O)NC2=CN=CC3=CC=CC=C23)C2=CC(Cl)=CC=C2C1=O |o1:7|',
+ 'C[C@H]1CCCN(C(=O)CC2=CN=CC3=CC=CC=C23)[C@H]1C |o1:1,19|'}",,
+"2025-01-20,00:56:28",srdjanma_41135,#0,"Hey thats a good point that I am also curious about. Also did you see that in the training set quite a few values ""pIC50_SARS_CoV_2: 189 missing values. pIC50_MERS_CoV: 130 missing values."" have missing potency values? How do you handle that, just simply excluding them? Maybe adding them to the test set? Do you see any duplicates in SMILES within the training dataset?",luispintoc#0,
+"2025-01-20,08:39:58",jenkescheen.,#0,"yes, these will be removed. They may still be useful for benchmarking your own model(s) though!",luispintoc#0,
+"2025-01-20,08:41:22",jenkescheen.,#0,This is because not all compounds were assayed for both targets for a variety of practical reasons (e.g. when one target's potency turned out too low to warrant actioning an assay for the other target).,srdjanma_41135#0,
+"2025-01-20,08:54:16",cwognum,#0,"To add to this:
+
+Thanks for reporting, <@821170864568533033> ! You clearly did a careful data analysis and I’m excited to see your submission! 😄
+
+if these are true duplicates that slipped through , we’ll indeed ignore them at test time.
+
+~~However, can you confirm that the molecule is not paired with a different target? In other words: one molecule could be bound with both MERS CoV as well as SARS CoV 2. This would be expected and not an actual duplicate~~
+I read wrong, apologies. I thought you were talking about the ligand poses challenge, rather than the potency challenge.
+
+I will look into this myself as well this afternoon to confirm.",luispintoc#0、jenkescheen.#0,
+"2025-01-20,09:00:23",cwognum,#0,"And to add to this:
+
+This is a setting that you’ll run into a lot during real world drug discovery programs, for a variety of reasons like <@1328384613554585613> mentioned.
+
+From a ML perspective, you’re working with a _sparse multitask matrix_. You could simply build single-task models for each individual endpoint, filtering out the NaNs, and then combine their predictions, but it would be interesting to see if you can benefit from the shared information between tasks to improve generalizability with some sort of multitask model! For example, you could use a model with a shared trunk and endpoint specific prediction heads.",jenkescheen.#0,
+"2025-01-21,10:33:10",cwognum,#0,"Hey <@821170864568533033>, thanks again for reporting! We've looked into it. It's turns out to be quite an illustrative example!
+
+Turns out: These aren't actually duplicates. They are enantiomers. In other words: These molecules share the same molecular formula and connectivity (i.e., the same number and type of atoms bound in the same sequence) and hence the same SMILES, but differ in the spatial arrangement of their atoms. If you're not familiar with stereochemistry, you can learn more about it here: https://polaris-hub.github.io/auroris/stable/tutorials/stereoisomerism_QSAR.html. 
+
+Stereochemistry matters a lot in binding and such enantiomers actually have different readouts in the assay. It would've been cool to provide the 3D arrangement associated with these enantiomers to allow for some more advanced modelling techniques, but we unfortunately have not been able to identify them. In other words, we know that these are enantiomers, but we don't precisely know which has which spatial arrangement.
+
+It's a lesson in the limitations of the 2D graph representation (e.g. SMILES) we like to use in ML for our molecules and it is a reminder of the difficulty of data curation! 😅 
+
+Finally, on how we handle these cases during evaluation. We'll simply skip them!
+
+<@377331431246004225> <@1328384613554585613> Did I get that right? Feel free to chime in!",itstreasonthen.#0、jenkescheen.#0、luispintoc#0,
+"2025-01-21,11:11:22",jenkescheen.,#0,"Thanks <@437941389838516235> ! Just to illustrate a bit more: as you'll have noticed we use an extended SMILES notation called CXSMILES. This format allows annotation of more stereochemical details beyond just the '@' in regular SMILES notation. For a good explanation of CXSMILES and enhanced stereochemistry notation, see Greg Landrum's excellent blogpost here: https://greglandrum.github.io/rdkit-blog/posts/2023-11-19-explaining-stereo-groups.html
+
+To bring things back to this particular use-case: we're looking at five matched enantiomers that have 'OR' stereochemistry. That means that either entry can be either enantiomer (more simply put: we don't know which is which), but the synthesis team has not done the follow-up synthetic experiments to determine which exact enantiomer is which. This typically isn't done for compounds that aren't necessarily worth following up on, or when it's obvious which enantiomer is dominating in potency.",cwognum#0,
+"2025-01-21,11:39:43",jonnyhsu,#0,"For those who might be interested, here's a short tutorial on how to get started with the challenge! 
+
+https://www.linkedin.com/posts/polarishq_it-only-takes-a-few-lines-of-code-to-get-activity-7287489051194990593-XGSN?utm_source=share&utm_medium=member_desktop",,
+"2025-01-21,16:10:33",cwognum,#0,,,
+"2025-01-24,11:29:41",jenkescheen.,#0,"Hi all, ASAP will be hosting three virtual 'office hours' next week Thursday and Friday. These are intended for you to be able to ask technical questions about the underlying data for all of the subchallenges! We have invited experimentalists from ASAP to sit in on these office hours so that you can directly ask them about anything that could be useful for building your models 🚀 
+
+This first round of office hours is as follows:
+Thursday January 30th: 1AM PT / 4AM ET / 9AM GMT / 10AM CET / 8PM AUS
+Thursday January 30th: 8:30AM PT / 11:30AM ET / 4:30PM GMT / 5:30PM CET / 3:30AM AUS
+Friday January 31st: 8AM PT / 11AM ET / 4PM GMT / 5PM CET / 3AM AUS
+
+If you'd like to attend, can you please fill in this google form so that we can invite you to the calendar slots? The slots will contain Zoom URLs for you to use at the time of the meeting.
+
+Here's the link to the poll: https://forms.gle/2ke3JYKrrXrfaE9J6",,
+"2025-01-25,18:00:51",luispintoc,#0,"Very clear, thanks!",cwognum#0,
+"2025-01-28,13:32:35",valerij6915,#0,"I would have a question about the data for the potency challenge if it is fine.  For SARS and MERS there are there are NaN values in pIC50 for SARS but not for MERS in cases such as ""CNC(=O)CN1C[C@]2(C[C@H](C)N(C3=CN=CC=C3C3CC3)C2=O)C2=C(C=CC(Cl)=C2)C1=O"" where it has an NaN in the pIC50 for SARS due to the pIC50 being < 5.00/ < 4.00 in the csv file with a reasonable pIC50 value for MERS (in that case 4.73), so I wanted to ask if for the test set that we need to predict, are there cases where the true values for the pIC50 for SARS are < 4.00 and if so how should we specify them or does the test set has a ""=""  value above the 4.0 pIC50 threshold for all of the SMILES?",,
+"2025-01-28,17:38:43",cwognum,#0,"Hey! Good question! For the test set, we've filtered out all molecules with a > or < modifier. Put differently, all test molecules have values within the instrumental detection limit.",valerij6915#0,
+"2025-01-28,17:40:09",valerij6915,#0,"Hey <@437941389838516235>, perfect this answers my question, thank you for the answer 🙂",cwognum#0,
+"2025-01-29,13:41:34",luispintoc,#0,"Hi one question regarding both potency and ADMET, are we allowed to use external datasets?",,
+"2025-01-29,13:47:36",cwognum,#0,"Hi <@821170864568533033> , yes! As long as it's publicly available, you're free to use any external datasets (and we recommend it!). 
+
+We're curious to see if anyone could've done better than we did, and we had access to other public data at the time as well.",luispintoc#0,
+"2025-01-30,09:48:48",bartl88,#0,Is it correct that there is an interim leaderbord for which there is a submission deadline tomorrow? If so which time tomorrow?,,
+"2025-01-31,07:09:31",bartl88,#0,Another question- for the submission do the predictions need to be backtransformed? e.g. or can we submit it transformed (log10_),,
+"2025-01-31,07:56:14",cwognum,#0,"Indeed! However, we’ve had several teams reach out to us that this conflicts with the ICML deadline. ***We’ve therefore decided to extend the deadline by another week***. 
+
+Official announcement will follow later today!",bartl88#0,
+"2025-01-31,08:00:58",cwognum,#0,"Good question! The predictions should be in the same format as the targets of the train set. 
+
+For Potency, this means to keep everything log transformed (i.e. pIC50), whereas for ADMET only LogD is in log units. Predictions for all other ADMET endpoints should have the same unit as the assay.",bartl88#0,
+"2025-01-31,08:16:26",bartl88,#0,"Thanks, It would be good if these rules/guidelines are also documented on the website",,
+"2025-02-02,09:33:11",wiwnopgm,#0,"Hello,
+
+I'd like to pose a question regarding the ligand pose challenge. I'm curious how we could possibly load the training dataset in cif / mmcif format. Any recommended way to do so?",,
+"2025-02-02,14:18:24",cwognum,#0,"Hi <@695190081698529353>, good question! 
+
+The  `AtomArray` object that is returned by the competition can be easily converted to a CIF file through Biotite (https://www.biotite-python.org/latest/index.html). However, it's worth noting that the original data was provided as PDBs and I'm not sure if you still lack any information after the conversion because of that.
+
+Having said that, here's a simple code snippet: 
+
+```py
+import polaris as po
+from biotite.structure.io import save_structure 
+
+# Load the competition
+competititon = po.load_competition(""asap-discovery/antiviral-ligand-poses-2025"")
+
+# Load a single datapoint, just to illustrate how to do the conversion. 
+# Note that the type of atom_array is the Biotite AtomArray.
+atom_array = competititon.get_data(row=0, col=""Complex Structure"")
+
+# Save to CIF through Biotite
+save_structure(""system.cif"", atom_array)
+```",wiwnopgm#0,
+"2025-02-02,15:06:45",wiwnopgm,#0,Thanks for clarification. It looks like original PDBs didn't come with the structure entities.,cwognum#0,
+"2025-02-02,15:08:06",cwognum,#0,"FYI - We provide the raw data package here: https://fs.polarishub.io/2025-01-asap-discovery/raw_data_package.zip
+
+Maybe some information got lost in the conversion to the ML-ready `AtomArray` object.",wiwnopgm#0,
+"2025-02-02,15:11:26",wiwnopgm,#0,Thanks a lot. I was looking for this. I seem to come across only the sample version,cwognum#0,
+"2025-02-04,21:12:56",luispintoc,#0,"Hi, can I get help in submitting the predictions?
+
+predictions = {
+    'sars': sars_df['ensemble'].to_list(),
+    'mers': mers_df['ensemble'].to_list()
+}
+
+gives me a validation error but that's the syntax from the example:
+
+predictions = {
+    label: [... for x in test] 
+    for label in benchmark.target_cols
+}",,
+"2025-02-04,22:24:29",cwognum,#0,"Hey <@821170864568533033> , you’ll need to use the precise labels. If you print the value of `competition.target_cols`, you’ll see that it’s `[“pIC50 (MERS-CoV Mpro)”, “pIC50 (SARS-CoV-2 Mpro)”]`. 
+
+In other words, it should be: 
+```py
+predictions = {
+    “pIC50 (SARS-CoV-2 Mpro)”: …,
+    “pIC50 (MERS-CoV Mpro)”: …
+}
+```
+
+Seems the error we throw in this case can be made more clear. That’s something we should improve on our end. Would you mind filing a Github issue in which you share the full stack trace and some context?",luispintoc#0,
+"2025-02-05,10:28:55",lexobrien.,#0,Did anyone get any information from the drop in sessions as to what the missing values in the ADMET dataset mean? Are they outside the detection limits?  Or experiment failed randomly?  Some other reason?,,
+"2025-02-05,10:32:17",cwognum,#0,"Hey Lex, good question! During a drug discovery program one typically doesn't profile all molecules in all assays. For example, companies could organize their ADMET assays in a hierarchy (or funnel), where you only profile a molecule in an assay if it showed desirable properties in all previous assays. Working with a sparse multi-task matrix is thus common.
+
+<@1328384613554585613> <@377331431246004225> Anything you would add here?",itstreasonthen.#0、jenkescheen.#0、lexobrien.#0,
+"2025-02-05,11:06:45",lexobrien.,#0,Thank you. So if a value is missing then the assay wasn't attempted at all?  Is that correct?,,
+"2025-02-05,12:04:02",cwognum,#0,"That's indeed what happened in most cases. 
+
+For completeness sake, it's worth noting that some of these missing values may also be because they were outside the detection limit, but that's a small portion. If you're curious, you can compare against the raw data package here: https://fs.polarishub.io/2025-01-asap-discovery/raw_data_package.zip",,
+"2025-02-05,12:15:16",lexobrien.,#0,"OK, in which case i'm a bit confused.  are we not allowed to know the meaning of the missing values?  I've looked on the protocols (admittedly not all of them) but I can't see a reason there.  Have I missed something?",,
+"2025-02-05,12:37:39",cwognum,#0,"Hi Lex, I answered your question before you edited it, so I see how my answer was confusing as well. I've updated my answer as well now. Let me know if it's more clear.",,
+"2025-02-05,15:53:00",lexobrien.,#0,"Ah ok, thanks very much.",,
+"2025-02-06,09:43:54",bartl88,#0,"We will evaluate your submission using MAE on the log transformed endpoints, after clipping to the strictly positive detection limit. This minimises the effect of massive outliers on the MAE. For LogD which is already in log units we will just use MAE directly.",,
+"2025-02-06,09:44:30",bartl88,#0,Could the detection limits be shared?; why was the train dataset not censored in the first place? (e.g. > / <),,
+"2025-02-06,09:59:34",cwognum,#0,"Hey <@1093234148212232275> , we provide the evaluation script we use here: https://github.com/asapdiscovery/asap-polaris-blind-challenge-examples/blob/main/evaulation.py
+
+On clipping, see line 177 and 178. We're simply clipping to a small epsilon to prevent taking the log of 0.
+
+> why was the train dataset not censored in the first place? (e.g. > / <)
+Not sure what you mean? The dataset that is hosted on Polaris is what we call *ML-ready*. For this version, we only kept the datapoints with the = modifier. We also provide the raw data package for folks experienced with this data who would like to have a little more freedom and flexibility to preprocess the train dataset differently.",bartl88#0,
+"2025-02-06,10:17:22",bartl88,#0,Ok <@437941389838516235> - thanks that's clear- another question- can proprietary software be used? e.g. for instance proprietary QM software to calculate properties.,cwognum#0,
+"2025-02-06,11:14:56",jonnyhsu,#0,You are free to use whatever you want to participate in the challenge!,bartl88#0,
+"2025-02-06,11:17:25",jenkescheen.,#0,"absolutely, we'd also love to hear what you used in those cases so (if you're able) please use the `report_url`, `description` and `user_attributes` parameters in `.submit_predictions()`! 🚀",bartl88#0,
+"2025-02-07,04:15:12",wiwnopgm,#0,Hi I find the potency and pose datasets have 0% overlaps in CXSMILES. Is this expected? I hope to use ligand pose data in some property prediction pipelines.,,
+"2025-02-07,04:34:35",itstreasonthen.,#0,Do you mean between the two training sets or between test / train,,
+"2025-02-07,04:34:37",itstreasonthen.,#0,?,,
+"2025-02-07,05:01:40",yannick_64058,#0,Hi the submission for prospective challenges is tonight or I’ve missed the deadline ?,,
+"2025-02-07,05:02:47",itstreasonthen.,#0,"I think you can probably submit tonight? Valence folks can confirm, but I believe we extended to end of week friday inclusive.",,
+"2025-02-07,05:04:19",itstreasonthen.,#0,"On this we tried to minimize train-test overlap as much as possible. In the case of crystal structures, many of these come from covid moonshot rather than asap itself hence low compound overlap, but do provide great assistance if you want to dock + then try measure affinities.",,
+"2025-02-07,05:04:40",yannick_64058,#0,Thanks! Also wondering the test set is a temporal split compare to the train set ? Is there a split method to split the train also like that or I need to do by myself with raw data ?,,
+"2025-02-07,05:06:34",itstreasonthen.,#0,"For ADME and Potency the train set is roughly a temporal split relative to the train set, but also had to take into account minimising compound leakage between train / test and also between subchallenges. If you want to create a validation set then likely a time split will be a good choice or something like SIMPD: https://splito-docs.datamol.io/stable/api/simpd.html",,
+"2025-02-07,05:06:45",itstreasonthen.,#0,But that is quite advanced,,
+"2025-02-07,05:07:06",itstreasonthen.,#0,To be super clear the train set comes first timewise (is older) and test set is newer,,
+"2025-02-07,05:08:07",itstreasonthen.,#0,this mimics how a drug discovery project would come accross information,,
+"2025-02-07,05:08:19",itstreasonthen.,#0,at least to a first approximation,,
+"2025-02-07,05:11:49",yannick_64058,#0,"Yep, I’m focusing on admet one and that makes sense to me. I’ve tried to play around with lo split a bit last night, need more investigation to see how it’s affecting the performance with 🙂",,
+"2025-02-07,05:12:17",itstreasonthen.,#0,"No problem, happy to answer any questions 🙂",,
+"2025-02-07,06:31:42",wiwnopgm,#0,"Thanks for your response. I hope to use 3D data of the compounds in the training set in potency and ADMET predictions. I suppose one way is to use pose predictive modeling to get that first and transform those as embeddings in downstream predictions, or using dock as suggested",itstreasonthen.#0,
+"2025-02-07,09:40:16",jonnyhsu,#0,🚨  The cut off to make it for the first intermediate leaderboard is midnight today in whatever timezone you're in!,,
+"2025-02-07,11:38:22",bartl88,#0,"im getting a pydantic error when submitting; any idea? I want submit my df; df = pd.read_csv(""interim_submission.csv"")
+print(df.head)
+df_dict = {col: df[col].to_numpy() for col in df.columns}",,
+"2025-02-07,11:38:33",bartl88,#0,....,,
+"2025-02-07,11:38:58",bartl88,#0,"competition.submit_predictions(
+    predictions=df_dict, ... )",,
+"2025-02-07,11:39:11",bartl88,#0,"Error: value error, The predictions for multi-task, single test set benchmarks should be a dictionary with the target labels as keys.",,
+"2025-02-07,11:40:41",bartl88,#0,(to list also does not work),,
+"2025-02-07,11:42:17",aurovarat,#0,"Hi, Is it acceptable to not have a written report for the intermediate submission?",,
+"2025-02-07,11:47:41",bartl88,#0,ok nvm turns out the order was wrong &/or a column name,,
+"2025-02-07,11:49:11",bartl88,#0,I see a different message though; Success: Submitting competition predictions - can someone confirm this is expected - and our submission was received?,,
+"2025-02-07,11:49:50",bartl88,#0,(vs ✅ SUCCESS: Your competition predictions have been successfully uploaded to the Hub for evaluation) - mentioned here https://github.com/asapdiscovery/asap-polaris-blind-challenge-examples/blob/main/01.%20Ligand%20ADMET%20and%20Potency%20(Property%20Prediction).ipynb,,
+"2025-02-07,11:57:52",cwognum,#0,"Yes, that is acceptable.
+
+However, once the deadline closes we will reach out to all participants to ask them to share a short write-up for the submission. While we recommend it, it will not be required.
+
+The ASAP Discovery challenge prioritizes shared learning and collaboration over competition. We thus hope that the intermediate leaderboards can create an environment where participants exchange ideas and iterate.",aurovarat#0,
+"2025-02-07,11:59:20",cwognum,#0,"Good call out! We changed the logging on Polaris after several users reported issue with our previous setup, so the difference is expected. We should rerun those notebooks with the latest Polaris version.
+
+What's the Polaris username with which you submitted? Then I will confirm that all has been correctly received.",bartl88#0,
+"2025-02-07,12:27:29",aurovarat,#0,"Thank you for your response. Also, wondering if the reports submitted in subsequent submission before the deadline will be visible to others. I can most likely add a report to my next submission or attach a report to my intermediate submission at a later date if there was some api call to do that?",cwognum#0,
+"2025-02-07,13:15:59",valerij6915,#0,"For the submission, for the contributors section in submit_predictions the handles of the contributors in polaris need to be used, thus each one of the contributors has to be registred in polarishub.io?  and if I would use an organization name for prediction_owner then each of the contributors has to be a member in this organization on the polarishub.io?",,
+"2025-02-07,14:28:05",cwognum,#0,Contributors in the Prediction Submission,,
+"2025-02-07,16:03:34",bartl88,#0,ebl88,cwognum#0,
+"2025-02-07,16:10:51",longhung25,#0,"Hi everyone, I just realized for the ADME task, the train labels may not be in log scale (it is in uM for KSOL if I'm not mistaken). The description says that evaluation will be made on log scale. Is this correct or am I missing something?",,
+"2025-02-07,16:19:07",cwognum,#0,"That's correct. We should clarify this as it is confusing people, but to summarize: 
+
+- Labels in the train set are provided in the original assay units
+- You should submit your predictions in these same units (so *not* log scale). 
+
+During evaluation, we convert them to the log scale to minimize the impact of outliers. You can find our evaluation script here: https://github.com/asapdiscovery/asap-polaris-blind-challenge-examples/blob/main/evaulation.py
+
+We will do some sanity checks on the submitted predictions. If we notice any predictions being in the wrong unit or scale, we will reach out to the respective creator to give them a chance to correct this mistake.",longhung25#0,
+"2025-02-08,11:09:20",bartl88,#0,When/Where will the interim leaderbord be visible?,,
+"2025-02-08,11:22:57",cwognum,#0,"We will publish it by next Friday at the latest on the Polaris website.
+
+Especially for this first leaderboard, we will go through the results in a bit more detail to see if there are any predictions that are accidentally wrongly processed prior to submission. For example, log transformed while they shouldn’t be or wrongly aligned for the ligand pose challenge.
+
+All teams that submitted can expect an email this weekend confirming their submission!",bartl88#0,
+"2025-02-08,18:24:43",cwognum,#0,"We've just sent an email to all people that submitted at least a single set of predictions to the interim leaderboard. If you haven't received an email and expected it, please reach out! Thank you everyone! Excited to dig into these results! 👀 🔥",,
+"2025-02-08,19:59:56",itstreasonthen.,#0,I will say thank you and congratulations to everyone that submitted for the intermediate leaderboard. We at ASAP really appreciate your early adoption and early battle testing.,,
+"2025-02-08,19:59:59",itstreasonthen.,#0,🙂,,
+"2025-02-11,07:25:36",lexobrien.,#0,"Hi folks,  does anyone have any good references on what would be considered optimal ranges for the various admet targets? I have my own ideas but my med chem knowledge is patchy.",,
+"2025-02-11,07:33:31",cwognum,#0,"Not sure if it has all the answers, but ASAP shared its Target Candidate Profile (TCP) here: https://docs.google.com/presentation/d/1uZht18ZJnHuwMtwxY4prDBSl4SFMK-ics4ERhDgiJ2s/edit#slide=id.g285bac68500_0_227",lexobrien.#0,
+"2025-02-11,08:28:08",lexobrien.,#0,"of course, thanks so much.",cwognum#0,
+"2025-02-13,20:40:36",luispintoc,#0,"Hi all, I have some questions regarding the ligand pose challenge. Why are we given two protein sequences? Is the ligand ground truth conformation obtained from interacting with both sequences? I'm new to proteins so I have a hard time picturing it",,
+"2025-02-14,10:23:42",jenkescheen.,#0,"hi <@821170864568533033> ! The same ligand will (almost always) have a different potency for two different proteins. At ASAP we are developing drug candidates fthat bind potently to two proteins (SARS-CoV-2 Mpro and MERS-CoV Mpro)  at the same time. For this reason we have measured potencies for both proteins. This means that in the training set, a given compound might have a potency measurement on the one protein or on the other (and in some cases both, but they will appear as different data points IIRC). 
+
+Even though the proteins are very similar, there are some subtle differences (especially in the ligand binding region) that will cause some ligands to bind better to the one than to the other.
+
+If you're interested in learning more about these effects, see e.g. https://pmc.ncbi.nlm.nih.gov/articles/PMC4783878/",luispintoc#0,
+"2025-02-14,11:21:55",luispintoc,#0,"Thanks, but with respect to the ligand pose, we are only given 1 conformation, is this conformation given by sequence A or sequence B or somehow by both?",,
+"2025-02-14,11:39:47",jenkescheen.,#0,"shoot, I misread your question! Mpro is a biological homodimer, and ligands can bind in both chain A and B. We included both for completeness, especially because the monomer-monomer interphase is quite close to the binding site. Generally though, we ask that you predict poses for chain A (and you're safe to ignore chain B if you're not using it directly in some way)",luispintoc#0,
+"2025-02-14,12:35:59",luispintoc,#0,"Clear, thanks!",,
+"2025-02-14,14:54:02",cwognum,#0,"🏆  **Interim Leaderboard 1**
+
+Hi everyone, I'm excited to share the results for the first interim leaderboard of the ASAP Discovery challenge. We're still making some minor tweaks to the design of the results page and plan to announce it publicly on Monday.
+
+A big thank you to everyone who participated! We hope this interim leaderboard provides an opportunity for all of you to exchange ideas and iterate. I'm excited about the next leaderboard already!  🚀 
+
+https://antiviral.polarishub.io/",,
+"2025-02-14,15:56:13",r_ced,#0,"Interesting. Congrats to the interim winners.
+
+ My potency submission (ranked #4) used NovaML which is a simple consensus model of LGBM, Random Forest, XGBoost and ExtraTrees trained on Morgan binary FP and physchem descriptors. 
+
+https://github.com/novalixofficial/NovaWebApp
+
+Curious to learn more about other participants' strategies.",,
+"2025-02-15,11:04:20",bartl88,#0,"Our submission (ebl88) - ranked first for ADME, I believe we did share the short summary by email (not in the initial submission) - is this shared somewhere/will it be?",cwognum#0,
+"2025-02-15,11:25:22",cwognum,#0,"Thanks for checking in and congratulations on your first-place ranking for the ADMET challenge!  🚀 
+
+We're working on making all summaries available via the ""Report"" button on the interim results page. Thanks again for sending yours by email. This last week we prioritized helping teams with debugging their submission, which has slightly delayed this.  We'll let you know when they're live. 
+
+In the meantime, feel free to share any details about your submission here! I'm sure people would be curious to know how you approached this problem! 👀",bartl88#0,
+"2025-02-15,12:17:25",r_ced,#0,"In Ligand Pose, it looks like the baseline model significantly outperformed the submissions. Is it mainly because the right pockets were not correctly identified? (I am yet to look at the structures myself).",,
+"2025-02-16,04:59:15",itstreasonthen.,#0,Congratulations to all who submitted!,,
+"2025-02-16,05:07:46",itstreasonthen.,#0,"For the poses, there were two main issues,  
+
+1. Incorrect alignment with the reference. Some people didn't quite get the alignment right which made their results look very bad. We are working on an example to make this easier and clearer. 
+2. Poor quality of poses. In our experience, pure blind docking is not likely to get you very close to the complex structure in question. The baseline uses structural information in the training set by selecting the most chemically similar ligands to then seed an common-substructure based openeye docking run. Main point being that the structural information from related ligands is used effectively. 
+
+ Full details on all the baselines can be found on github: https://github.com/asapdiscovery/asap-polaris-challenge-baselines",,
+"2025-02-16,05:10:33",itstreasonthen.,#0,On behalf of ASAP I would love to also see people's strategies!,,
+"2025-02-16,05:10:44",itstreasonthen.,#0,Please share here if able!,,
+"2025-02-16,13:15:02",luispintoc,#0,"Hi, another question, can we use non-commercially available models / software?",,
+"2025-02-16,18:11:07",itstreasonthen.,#0,Yes! You can use whatever you like!,,
+"2025-02-16,18:40:05",dubbid,#0,"Here's my methods for straightforward baseline, currently 4/17 on ADMET
+
+Using a basic Random Forest Regressor on morgan fingerprints and rdkit descriptors (provided by Descriptastorus):
+
+I trained a model for each of the following datasets:
+(TDC) ['Caco2_Wang', 'Lipophilicity_AstraZeneca', 'Solubility_AqSolDB', 'HydrationFreeEnergy_FreeSolv', 'PPBR_AZ', 'Clearance_Hepatocyte_AZ', 'Clearance_Microsome_AZ']
+(Other) [""acs_chemrestox_2c00207_si_002_hlm.csv"", ""acs_chemrestox_2c00207_si_002_rlm.csv"", ""AID_1963597_datatable_all.csv"", ""bioinformatics_btab547_Supplementary_Data.csv"", ""logd74.csv"", ""13321_2024_826_MOESM6_ESM-filtered.csv"", ""10822_2022_450_MOESM1_ESM.csv"", ""sol-az.csv"", ""delaney-processed.csv""]
+
+Then I used the predictions of those models along with the same morgan fp and rdkit descriptors to train another randomforest on the competition data.",,
+"2025-02-16,18:44:14",itstreasonthen.,#0,"<@250480346695598081> very interesting! Great performance from quite a simple model. Data is key as they say.
+
+Would you be able to share on github by any chance 🙂",dubbid#0,
+"2025-02-16,18:47:51",itstreasonthen.,#0,"Also by ""Then I used the predictions of those models"" you mean you used model stacking, ie model as input to another model?",,
+"2025-02-16,20:48:36",dubbid,#0,"I’ll share the GitHub when ready, but yeah it’s like almost stacking but I think more like a featurization because the model ‘stacked’ on top isn’t trained on the target dataset",,
+"2025-02-16,22:17:39",cwognum,#0,"I really like the direction of training on similar datasets!
+
+I wonder if we would see a significant difference between different techniques to leverage such external datasets. For example, you could also do pretraining-finetuning, some form of metalearning, multi-task learning, etc.",dubbid#0,
+"2025-02-17,00:16:34",dubbid,#0,"Probably! part of the reason I'm sharing, hope people can do more and publish more results 🙂",,
+"2025-02-17,04:49:24",bartl88,#0,keep in mind that the AZ clearance datasets are a mix of different species; https://www.ebi.ac.uk/chembl/explore/activities/QUERYSTRING:document_chembl_id%3ACHEMBL3301361%20AND%20standard_type%3A%22CL%22?description=Activity%20Types%20for%20Document%20CHEMBL3301361%20%28Experimental%20in%20vitro%20DMPK%20and%20physicochemical%20data%20on%20a%20set%20of%20publicly%20disclosed%20compounds%29%20-%20CL,dubbid#0,
+"2025-02-17,04:49:58",bartl88,#0,-e.g. better to curate it from the source (take a look at the assay_id),,
+"2025-02-17,04:50:40",bartl88,#0,Is it correct there will be another intermediate leaderbord? before the end of the challenge (22 days),cwognum#0,https://cdn.discordapp.com/attachments/1311539940797972581/1340983751198507008/image.png?ex=680a0970&is=6808b7f0&hm=268bb715212c8a360e35f94935abb6fc4d49d555ad6794b7a13f54fa9f78a68c&
+"2025-02-17,05:00:05",salmon_lemon,#0,Will you share your code in the public domain ?,bartl88#0,
+"2025-02-17,05:01:46",bartl88,#0,"the summary will be shared first, I guess, code/data will be shared (if approved internally) but maybe at a later point (e.g. needs approval internally)",salmon_lemon#0,
+"2025-02-17,12:35:36",jonnyhsu,#0,"Yes, this is correct!",bartl88#0,
+"2025-02-17,20:30:16",luispintoc,#0,"About the incorrect alignment, I'm having trouble with it. Given two sdf files (xyz coords and list of atoms), is there a standard way to align?
+
+I was able to reorder their atoms, and bring them to the same center but can't align them further. I tried the Kabsch algorithm and Iterative Closest Point algorithm and still no luck. Can anyone help?",itstreasonthen.#0,
+"2025-02-19,05:07:11",itstreasonthen.,#0,"Hi luis, have a peek at the updated version of the poses examples",,
+"2025-02-19,05:07:11",itstreasonthen.,#0,https://github.com/asapdiscovery/asap-polaris-blind-challenge-examples/blob/main/02.%20Ligand%20Poses%20(Blind%20Docking).ipynb,,
+"2025-02-19,05:07:22",itstreasonthen.,#0,In particular the `making it more concrete` section,,
+"2025-02-19,14:39:44",cwognum,#0,Provided summaries and Github links should now be available on the leaderboard: https://antiviral.polarishub.io/,,
+"2025-02-19,14:41:22",cwognum,#0,"Just to chime in here: 
+
+> Given two sdf files 
+You shouldn't change / align the ligand pose (i.e. the SDFs), but rather the full bound protein-ligand structures. Hope the tutorials help!",luispintoc#0,
+"2025-02-19,19:21:43",luispintoc,#0,"Thank you for the info. I was confused because we are given this in the train set:
+'Chain A Sequence', 'CXSMILES', 'Chain B Sequence', 'Protein Label', <mol object>",,
+"2025-02-19,19:23:40",luispintoc,#0,"and in the ""Code example"" when clicking ""Compete"" (https://polarishub.io/competitions/asap-discovery/antiviral-ligand-poses-2025) there is nothing about using:
+competition[0], etc to get the other keys ""Complex Structure"", 'Protein Structure'",,
+"2025-02-19,19:29:27",cwognum,#0,"That’s good feedback!
+
+“Normally”, we would ask you to submit the full structure and we would do the alignment on our end. That would fix these issues.
+
+However, the Polaris competition infra is still very new and we can’t support this yet.",luispintoc#0,
+"2025-02-20,07:27:26",lexobrien.,#0,"Hi folks, 
+
+Question about the sensitivity range of the MLM and HLM measurements.  In the raw data (referencing HLM only in this message) you have clearance rates that appear below the sensitivity limit of the assay - these are marked '<10 (uL/min/mg)'.  These all have half lives marked as '>173min'.  This makes sense, this limit would be set by how long you can wait fo rthe assay to finish: shorter times restrict the length of measurable half life. 
+
+ However, you also have some molecules which have clearance rates below 10 e.g., 0, 2, 3, ... with half lives longer than 173 minutes. The batch dates are almost all earlier for these molecules.  Can I infer that the later batches  had their assay times decreased and so the sensitivity was also decreased?",,
+"2025-02-20,07:29:51",lexobrien.,#0,^^ a small snippet of the HLM data to show what I mean.,,https://cdn.discordapp.com/attachments/1311539940797972581/1342110975855427615/Screenshot_2025-02-20_at_12.29.30.png?ex=680a2ebf&is=6808dd3f&hm=dc762828f05474d3e12d8c23433b1707263ab9b8cf3f58d6d9c00c86df578927&
+"2025-02-21,03:46:26",jenkescheen.,#0,"Hi Lex! Apologies that this took a while, I just wanted to check in with the ADMET team first. Here's their response:
+Our understanding of the data evolved with time. In January 2024 we did a retrospective analysis of % remaining against Clint assuming log linear decay (which we believed was valid) and concluded that  we could not confidently quote Clint values for measurements < 10 so set bounds on all future measurements at that point. We did not edit the previous calculations as we felt the data captured should reflect the analysis as it was made in the project. It would be valid for model building to censor the data where  Clint < 10 to:
+Clint<10 µl/min/mg
+Kel<0.004 min-1
+t1/2>173.3 min",lexobrien.#0,
+"2025-02-21,04:18:16",bartl88,#0,"<@1089154123259195486>  - nice catch. So this previous statement is not fully correct for HLM/MLM, if we understand it correctly we should censor all values = 10 to <10. ?  Could you confirm? Any other assays were this is the case ? <@1328384613554585613> <@437941389838516235>",cwognum#0、jenkescheen.#0、lexobrien.#0,
+"2025-02-21,11:19:53",cwognum,#0,"Hi! I don't understand the question, sorry. 
+
+Let me try rephrase <@1328384613554585613> his comments in my own words, to see if that helps: Early on, ASAP ran some experiments. Based on those early results, they decided on limits for any subsequent experiments. The confusing part seems to be that the data for the early experiments were included in the competition dataset, but weren't updated retrospectively with those new limits. We're thinking about how to handle this! 
+
+In the meantime, the easiest thing would be to manually filter out these early data points or to treat them as ""<10"".",bartl88#0、jenkescheen.#0,
+"2025-02-21,12:37:57",lexobrien.,#0,Thanks <@437941389838516235>  and <@1328384613554585613>  for your response.  I think I understand.,cwognum#0、jenkescheen.#0,
+"2025-02-22,05:25:12",bartl88,#0,"No problem, I guess I understand, thanks, i will treat the <10 data for HLM/MLM as <10 in my ML models. Perhaps this could be mentioned/updated on the website as well?",cwognum#0,
+"2025-02-22,06:01:49",bartl88,#0,So is the assumption correct that in the competition test set there is no <10 data for HLM and MLM? e.g. are all values above 10?,,
+"2025-02-22,16:46:53",vladvin_,#0,"Hey folks!
+I just realized that there is this channel for the ASAP competitions, so I may have a duplicated issue that was already covered. Nevertheless, I have just created a GitHub issue regarding ADMET challenge evaluation. Have a look at it please. And if you have any insights, let's talk about them.
+
+https://github.com/asapdiscovery/asap-polaris-blind-challenge-examples/issues/12",,
+"2025-02-22,19:17:15",cwognum,#0,Indeed!,bartl88#0,
+"2025-02-22,19:43:24",cwognum,#0,Good questions! I've taken a first stab at answering them! 😄,vladvin_#0,
+"2025-02-24,08:56:44",bartl88,#0,correct that the intermediate submission #2 was postponed? I see now in 6 days?,,
+"2025-02-24,10:54:11",jonnyhsu,#0,"The deadline for the next intermediate submission will be on Feb 26th at midnight (whatever your local time). We need to update the website! 
+
+This gives everyone enough time to see they how placed and still have ~1 week before the final submission deadline.",,
+"2025-02-24,16:24:53",gpcr,#0,"something a little bit confusing. in the reference PDB structures for alignment `https://fs.polarishub.io/2025-01-asap-discovery/ligand_poses_reference_structures.zip` the MERS and SARS2 mpro structures are overlaid, but in such a way that MERS A chain is overlaid with SARS2 B chain and vice versa. This means that the ""A chain"" pocket of MERS  and the ""A chain"" pocket of SARS2 are not aligned. Will there be symmetry correction in the evaluation? Also, the provided poses which are all to SARS2 mpro include both poses in the A site and in the B site of the provided reference complex",,
+"2025-02-24,17:25:39",gpcr,#0,"okay, i think i figured it out. The datapoint provided protein complexes are not perfectly aligned, and they also sometimes have their chain B overlaid on chain A of the reference structure. additinoally, sometimes the ligand SDF has a structure that is bound to side B, in that case the name inside the SDF for the ligand is B.XXX",,
+"2025-02-25,14:40:22",yul533,#0,"Hi! I’m a bit confused about the pose prediction challenge. So I need to predict ligand poses in the test set based on the “protein label,” rather than just for MERS-CoV Mpro? The challenge description page specifically mentions predicting poses for MERS-CoV Mpro, so I wanted to confirm the exact requirements. Thanks.",,https://cdn.discordapp.com/attachments/1311539940797972581/1344031255083225088/IMG_0118.png?ex=6809eae6&is=68089966&hm=97f0d6c8ceadc01566c5883b2e141bcbb77dd469a2972c092d0b5261bb4c80c8&
+"2025-02-25,16:18:10",itstreasonthen.,#0,"Yes that is slightly out of date, includes SARS and MERS poses, we should fix that.",,
+"2025-02-25,16:21:41",cwognum,#0,Updated! Thanks for reporting.,yul533#0,
+"2025-02-25,19:38:47",vladvin_,#0,"Hey folks,
+
+One more issue to ADMET challenge came out: https://github.com/asapdiscovery/asap-polaris-blind-challenge-examples/issues/14
+
+Again, I forgot to check Discord before bringing it. Hopefully, it something new ))",,
+"2025-02-26,05:22:06",itstreasonthen.,#0,"<@440449220059725825> I will try and answer tommorow, sorry for delay",vladvin_#0,
+"2025-02-26,14:13:37",vladimirchupakhin_41526,#0,"There are duplicates, weird...",,
+"2025-02-27,00:08:43",danial_78835,#0,"Hello, can we upload the prediction results of the potency challenge in a Pandas DataFrame, like:
+SARS: 1st column for SMILES, 2nd column for pIC50
+MERS: same as above
+Or do they need to be in a dictionary with the target name as the key and predictions as the value?
+like I have it in CSV.",,https://cdn.discordapp.com/attachments/1311539940797972581/1344536675971366932/image.png?ex=6809c75b&is=680875db&hm=2ee12caf295e0de98cca279674c7487bb248573e2a5adb50670d05328e70c402&
+"2025-02-27,04:32:08",itstreasonthen.,#0,It has to be a dict,,
+"2025-02-27,04:32:17",itstreasonthen.,#0,like in the example,,
+"2025-02-27,04:36:12",itstreasonthen.,#0,"<@440449220059725825> we are working on cleaning this up on the eval side, have updates to participants ASAP",vladvin_#0,
+"2025-02-27,12:30:39",cwognum,#0,"Hi everyone, heads-up that the deadline for the second interim leaderboard passed a few hours ago. We are in the process of evaluating all submissions we received so far. Don't hesitate to reach out if you have any questions!",,
+"2025-02-27,22:50:21",danial_78835,#0,"Thank you, Professor. I noticed that in the example y_pred, there are 297 values total. However, after removing duplicates, the count drops to around 267. We performed the calculations using the 267 values.
+
+Storing the results in a dictionary array could lead to a mismatch when comparing the yours (reference values) with our predicted values, potentially affecting the results. How should we handle the duplicates? Should we write NaN for the duplicate entries, or should we recalculate the pIC50 values according to the 297 dataset?",itstreasonthen.#0,
+"2025-02-28,02:47:12",bartl88,#0,when do you expect the new interim leaderbord to be online?,cwognum#0,
+"2025-02-28,09:55:00",jonnyhsu,#0,Very soon! Stay tuned 👀,,
+"2025-02-28,15:29:08",cwognum,#0,"@everyone Excited to share the results for the second interim leaderboard! Congratulations to everyone who submitted and thank you for your interesting questions, careful analyses, and insightful comments! 🏆 ❤️ 
+
+Detailed results: https://antiviral.polarishub.io/
+
+As a reminder, the final submissions deadline is **March 10th at midnight, anywhere on earth**. 
+
+We have been lenient for the interim leaderboards, but as a reminder:
+- 📚 To be eligible for the final and official leaderboard, you are _required_ to share a short (~1 page) report about your method for the final submission.
+- 🧑‍💻 Although this is _optional_, please consider sharing a reference to your code as well.
+
+You specify both in the `submit_predictions()` method: 
+```py
+competiton.submit_predictions(report_url=..., github_url=...)
+```
+ 
+Good luck to all teams with the last sprint! 🚀",,https://cdn.discordapp.com/attachments/1311539940797972581/1345130691381301332/the_antiviral_leaderboard_square_2__1_.png?ex=6809f654&is=6808a4d4&hm=f3bb73f8c2e6b690efd8191e24f96409148500c17dcaa052736e6b1556de700c&
+"2025-02-28,15:56:50",vladvin_,#0,"Hi Hugo!
+To make sure, are you working on the issue I posted recently?
+https://github.com/asapdiscovery/asap-polaris-blind-challenge-examples/issues/14",itstreasonthen.#0,
+"2025-02-28,16:44:08",r_ced,#0,"Thanks for the update.
+
+My ligand pose submission (ranked #3) used traditional docking (no ML).
+
+My potency  (ranked #4) and admet (ranked #7) entries both used boosted trees and ECFP4 + physchem + extra features trained on external dataset, all without hyperparameter tuning. 
+
+ I tested learned embeddings ( ChemBERTa, MolFormer etc) but didn't improve performance. 
+
+Curious to hear about other strategies.",cwognum#0,
+"2025-02-28,17:18:52",itstreasonthen.,#0,"Yes sorry, been trying to sort out the eval",vladvin_#0,
+"2025-02-28,18:27:19",vladvin_,#0,Great. Looking forward to your updates! And let's discuss whatever questions along the way,itstreasonthen.#0,
+"2025-02-28,19:48:08",itstreasonthen.,#0,"I am going to leave a big reminder here in case people missed it 
+
+**To be eligible for the final and official leaderboard, you are required to share a short (~1 page) report about your method for the final submission.**",,
+"2025-02-28,20:00:31",itstreasonthen.,#0,I replied sorry for the delay,vladvin_#0,
+"2025-02-28,20:00:38",itstreasonthen.,#0,Happy to discuss further!,,
+"2025-02-28,20:42:21",vladvin_,#0,"Thanks for the reply, <@377331431246004225>, I replied in turn!",itstreasonthen.#0,
+"2025-03-01,02:21:19",r_ced,#0,"I agree with <@440449220059725825> that a normalized MAE is more robust. It would be interesting to have it on the leaderboard to see how sensitive is the primary MAE metric to scale differences. 
+
+Indeed the rankings could shuffle based on the chosen metric. This is what I observed in many ML publications where authors choose the metric that would make their proposed model be written in bold.",vladvin_#0,
+"2025-03-01,04:06:38",bartl88,#0,"Thanks, a bit sad we were passed in the leaderbord 😉 - but curious to see what was done by others ! what do these letters stand for? The compact letter display?",,https://cdn.discordapp.com/attachments/1311539940797972581/1345321324838522904/image.png?ex=6809ff1e&is=6808ad9e&hm=d81c6057359e231e51057e1c0d8fd19fbeb5deb589c8a63c193a2f60c9de98b7&
+"2025-03-01,05:21:33",r_ced,#0,"I'm also curious to see the code for the cld attribution. In my understanding, they did bootstrapping to check whether model #1 is statistically better than model #2.",,
+"2025-03-01,08:03:43",gpcr,#0,"Nice, congrats to everyone involved. I submitted some very simple benchmark models to all 3 challenges, under the name ""wim0"". The admet and potency ones underperformed (they were based on ECFP6_count thresholded nearest neighbor) but the pose prediction one did quite well (4th place). The benchmark model there is purely ligand-based (!), and relies on MCS, constrained embedding and calculation of spatial overlap",,
+"2025-03-01,10:02:27",r_ced,#0,"Thanks for sharing <@562621019454701568>, quite impressive for a purely ligand based approach. Did you simply select the conformation with the maximum spatial overlap or you have a special scoring function ?",gpcr#0,
+"2025-03-01,10:26:45",gpcr,#0,"i'll make the code public after the end of the challenge, but for 3d alignment  scoring simply used the color tanimoto from rdkit >2024.09 `rdShapeAlign.AlignMol` (i do not use the resulting coords for any translation or rotation because the input already has absolute coordinates close to the template)",,
+"2025-03-01,10:36:21",cwognum,#0,Love this! Such baselines serve as an important reality check to contextualize results.,gpcr#0,
+"2025-03-01,10:49:24",cwognum,#0,"Compact Letter Display is a way to display the results of pairwise comparisons using statistical tests. If two methods share a letter, than you can't conclude that one method is statistically significantly better than the other.
+
+For the technical details: We use Bootstrapping (`n=1000`) to sample the performance distribution. We then compare all performance distributions using the Tukey HSD test (implemented in `statsmodels` as `pairwise_tukeyhsd`). For the CLD, I couldn't find a robust implementation in Python (only R), so this was implemented from scratch. Assigning the letters is actually a NP-hard problem. I used the insert-absorb approximation. I just uploaded my code in case you're interested: https://github.com/asapdiscovery/asap-polaris-blind-challenge-examples/blob/main/cld.py
+
+Then a note on Bootstrapping: We acknowledge that bootstrapping likely underestimates variance. Ideally, we would use Cross-Validation, but this is not compatible with the challenge format and we are not aware of any other better sampling techniques.
+
+If you're curious to learn more about these topics, see: 
+- https://doi.org/10.26434/chemrxiv-2024-6dbwv-v2
+- https://doi.org/10.1198/1061860043515
+- https://doi.org/10.1016/j.csda.2006.09.035",bartl88#0,
+"2025-03-01,10:55:02",cwognum,#0,"This is an interesting point!
+
+Early on, we briefly considered using MPO rankings, which I believe to be the most principled way of addressing this issue (see e.g. `skcriteria` at https://scikit-criteria.quatrope.org/en/latest/) . This seemed too unconventional and we were worried it would be confusing rather than helpful.
+
+I agree that it's too late to make the change now, but for the forthcoming publication about this challenge it would be interesting to compare the stability of these results using different evaluation protocols! We're interested in hosting more challenges and this would help us improve the next one! 👀",vladvin_#0,
+"2025-03-01,13:44:24",manjari.narayan,#0,"There is a good literature on smoothing ranks to deal with discreteness, ties and other challenges with ranking comparisons. Smoothing before bootstrapping is essential. 
+
+Will follow-up on Monday.",cwognum#0,
+"2025-03-02,04:53:48",bartl88,#0,"great thx for the explanation! Te letters, correspond to the rankings? (e.g. a =1)",cwognum#0,
+"2025-03-02,10:23:08",cwognum,#0,"The letters are assigned based on the mean performance, so `a` performed best. 
+
+Note that it’s the rank of the group, not per se of the individual methods. It gets a little fuzzy! For example: imagine you have:
+- Method X with “a”
+- Method Y with “ab”
+- Method Z with “b”
+
+Y performs statistically similar to X and Z, but X and Z do not perform statistically similar to each other.",bartl88#0,
+"2025-03-03,03:14:28",danial_78835,#0,Could someone please clarify this for me?,,https://cdn.discordapp.com/attachments/1311539940797972581/1346032971710464071/ea3a24d1239b80b9f764006bafbf9e2.png?ex=6809f2e4&is=6808a164&hm=a62894e59af6f256d41ad3700f1b3dc123d4164b6753fb6ea9c9c832e81ae6b2&
+"2025-03-03,03:18:01",danial_78835,#0,"There are two predictions for potency. One is based on machine learning, which was submitted from our account siat353 for the whole dataset (297). Now, there are predictions for 267 based on MD simulation. How to deal with duplicates?",,
+"2025-03-03,07:10:44",cwognum,#0,"Hey <@1337612892710633513> , since the evaluation is mostly done automatically, it’s important to stick to the precise format that is prescribed. This means you need to provide a prediction for each input in the test set in the expected order.  This also applies for duplicates.
+
+Throughout the challenge, some issues were identified with the test set, but we’ll handle these on our side by filtering out certain test datapoints prior to evaluation.",danial_78835#0,
+"2025-03-03,07:13:49",cwognum,#0,Sorry for the delay in getting back to you!,,
+"2025-03-03,14:14:12",oliversun6788,#0,"Hey all I just discover this discord channel! Have some questions for <@329096597357068301> and <@562621019454701568> and maybe <@377331431246004225> . I'm currently ranked #5 on the ligand pose challenge (kysun) and I'm using a combination of fragment MCS approach + cross docking + EM + filter based on interaction. Originally I assumed that adding in this energy minimization + filtering part might boost up the results, but since you all also did approaches without a lot of ML, I want to ask to see if your methods involve some level of energy minimization to help me get a new sense of what's going wrong for my method. I would hope to boost up my scores a little bit more but have been struggling doing so.",gpcr#0、itstreasonthen.#0、r_ced#0,
+"2025-03-03,14:32:10",gpcr,#0,no energy minimization on my side. my conformers are unaltered etkdg ones. ime energy minimization in pose prediction can be a trap and sometimes lead to worse outcomes. docking scoring functions are specifically designed to retrieve poses (with moderate success) whereas energy minimization will just give you some sort of snapshot local minimum,,
+"2025-03-03,15:02:31",r_ced,#0,"Hi <@586317805515833384>, my workflow didn't involve energy minimization of the docked poses.",oliversun6788#0,
+"2025-03-03,15:03:31",r_ced,#0,Did you minimize both the protein and the ligand ?,,
+"2025-03-03,15:03:40",oliversun6788,#0,Awesome! Thank you all for chiming in. I will take a subset of the training data to do some ablation study then,,
+"2025-03-03,15:05:04",oliversun6788,#0,"Yes, I kind of did an unconstrained EM for both protein and ligand just to see where it takes me... My immediate next step plan is to maybe do a constrained EM on protein backbone and fragment MCS, but I observe that there are some cases where the ligand torsion constraint are just too high to be relaxed into a physically meaningful conformation, which is why I did the unconstrained EM at first",,
+"2025-03-03,15:09:40",r_ced,#0,Did you rank your poses based on strain energies relative to vacuum minimum energy conformation?,,
+"2025-03-03,15:19:10",r_ced,#0,"Anyway, I'm curious to know the range of RMSDs of your relaxed pose vs the docked pose.",,
+"2025-03-03,16:11:46",oliversun6788,#0,I can benchmark on that! I rank my pose based on the binding free energy using amber ff and implicit solvent. (total potential energy - protein pe - ligand pe),,
+"2025-03-05,09:36:14",azminetoushikwasi,#0,"<@&1181365889350774794> <@437941389838516235>  Is it possible to extend the deadline to March 15th maybe? Due to the ICCV deadline, I am struggling to manage compute in my academic servers.",cwognum#0,
+"2025-03-06,07:52:28",wiwnopgm,#0,I would like to make the same request. It is a bit busy to run all my pipelines for the challenge,azminetoushikwasi#0,
+"2025-03-06,12:23:01",cwognum,#0,I’ll bring it up with the organizers!,azminetoushikwasi#0,
+"2025-03-06,13:22:34",jenkescheen.,#0,@everyone based on a few requests we are extending the deadline of this challenge to March 14th at noon (12:00) ET! Looking forward to seeing how everyone did!,,
+"2025-03-06,18:24:17",itstreasonthen.,#0,"Once more for people that might have missed it:
+
+**To be eligible for the final and official leaderboard, you are required to share a short (~1 page) report about your method for the final submission.** If you can share code as well that would be great.",,
+"2025-03-07,20:13:10",life_is_sad,#0,"Has anyone been recieving this error today?
+```AttributeError: module 'sqlalchemy' has no attribute '__all__'```",,
+"2025-03-08,03:46:14",r_ced,#0,"Regarding the ligand pose challenge, I have some questions:
+1. In RMSD calculation, do we consider only the heavy atoms or the H positions also matter?
+2. Could a ligand pose with a different protonation state from that of the cocrystallized one lead to  errors? Or is there a mol standardization step that handles this?
+3. Will we be notified if the evaluation leads to ""ERROR""? What are the main causes of this? (which I've seen in some submissions)",,
+"2025-03-08,06:26:48",gpcr,#0,my assumptions: heavy atoms only. protonation matters because it can mess up template alignment for RMSD calc. would be good to see it confirmed. i dont recall anything in the train set that should have a different dominant protomer than provided,,
+"2025-03-08,06:47:44",r_ced,#0,"<@562621019454701568>, my workflow for ligand pose is almost completely automated so I have not examined the ligands closely. But in my experience, some docking protocols do alter the protonation state depending on the local environment to maximize interactions.",gpcr#0,
+"2025-03-08,08:32:52",gpcr,#0,"yes,for example ive seen obabel protonation model be used in automated docking pipelines do this, for example in ""dockstring"". better to be careful with it",,
+"2025-03-08,18:08:57",itstreasonthen.,#0,"1. protonation state doesn't matter, we only consider heavy atoms",,
+"2025-03-08,18:09:19",itstreasonthen.,#0,2. No this should be fine because of 1,,
+"2025-03-08,18:11:57",itstreasonthen.,#0,"3.  Heavy atoms don't match reference, ligands out of order, bond orders don't match, failed serialization etc.",,
+"2025-03-11,20:54:02",krolles_31239,#0,"Hi! May I ask you a couple of questions about the pose prediction subchallenge:
+1) Do the test ligands have any crystal contacts?
+2) Could you share the crystallography conditions (pH=6.5?, etc.)?
+3) Do you provide complete Mpro sequences, including structurally unresolved residues? I believe some of the provided Mpro sequences might be incomplete—for example, the helix with the AA sequence ""SEDML,"" which forms part of the binding pocket, is missing in some sequences, which might affect results.
+4) Are all ligands non-covalent? It looks like some have electrophilic groups that might form covalent bonds.
+5) Do the provided SMILES strings have the correct protonation/tautomeric form and stereochemistry?
+
+Sorry for so many questions 🙂",,
+"2025-03-11,21:17:12",itstreasonthen.,#0,"1) Not likely
+2) Crystallography full protocol is here: https://www.protocols.io/view/crystallisation-of-sars-cov-2-mpro-dgaw3sfe.html
+3) Not sure about this one <@1328384613554585613> can probably tell more
+4) The ligands here should be non-covalent
+5) These are the SMILEs as recorded in our compound registration system. They will have the stereochemistry as recorded therien (some enantiomers have been excluded post-hoc) They should be correct tautomers, except where binding to the protein could alter them.",jenkescheen.#0,
+"2025-03-12,04:48:48",wtreyde,#0,"Hi! Will the test data be released once the competition ends? If so, is there a tentative date?",,
+"2025-03-12,04:50:59",jenkescheen.,#0,tentative date for test data release is March 28th!,wtreyde#0,
+"2025-03-12,04:53:19",jenkescheen.,#0,"3) The structural biologists used the complete sequence in processing but there are variations in the datasets where there is no evidence to be able to place residues or loops such as that specific helix. i.e. no density observed hence cannot place the helix or residues so are intentionally absent in the structure.
+
+For this challenge, we've derived the sequence from the crystal structure, which explains the occasional gaps that you see. As all crystals were produced with the same construct, it would make sense for the construct’s sequence to be the shared reference, so in cases where you observe gaps you might want to refer to the 'canonical' sequence. Real-life drug discovery data is messy!",itstreasonthen.#0,
+"2025-03-13,01:53:26",r_ced,#0,"I completely agree that real-life drug discovery data is messy. 
+
+As the ligand can be found in both Chain A and B (homodimer) and may not have exactly identical pose , how does the RMSD evaluation handle this?",jenkescheen.#0,
+"2025-03-13,02:32:53",itstreasonthen.,#0,You should predict for Chain A,,
+"2025-03-13,17:49:29",oliversun6788,#0,Is the author list in the final 1-page report considered finalized? I have a co-worker who contributed to this challenge but he's on vacation and I couldn't get his consent to add him to the author list of the report. Can I include him later if he wants to be added to the final JCIM paper?,,
+"2025-03-13,17:53:14",itstreasonthen.,#0,"You can include him later assuming its in a google doc or similar, we will also  contact participating authors and you can correct then 🙂",,
+"2025-03-13,18:10:27",oliversun6788,#0,Thank you!,,
+"2025-03-14,00:27:37",yul533,#0,"Hi, I also feel confused about alignment. So will there be symmetry correction in the evaluation? <@377331431246004225>",gpcr#0、itstreasonthen.#0,
+"2025-03-14,01:57:13",r_ced,#0,"In practice though, we would normally select the experimental ligand from the Chain whose binding site has the best B-factor (or other quality metric). I thought this was considered in the RMSD eval.",,
+"2025-03-14,02:25:25",gpcr,#0,i have assumed no symmetry correction and strictly used the provided reference complexes for placement. the pose example notebook suggests the same thing,yul533#0,
+"2025-03-14,02:51:18",itstreasonthen.,#0,Sorry if the info is unclear but the symmetry correction is on the ligand only,,
+"2025-03-14,02:51:37",itstreasonthen.,#0,Ie the ligand RMSD is corrected for possible symmetric permutations,,
+"2025-03-14,02:51:53",itstreasonthen.,#0,The protein symmetry is not,,
+"2025-03-14,03:05:22",yul533,#0,Thank you for your reply!,,
+"2025-03-14,03:19:14",yul533,#0,Would it be possible to release information about ‘Error’ submissions before the deadline to notify affected participants and give them a chance to resubmit?,,
+"2025-03-14,08:09:05",cwognum,#0,"I did a dry run of the evaluation earlier this week and reached out to all failed submissions. After the deadline passes, we will  also send out emails today to failed or incomplete (e.g. missing report) submissions. 
+
+Be aware though that the timeline for resubmission will be short. We will finalize everything on Monday by 12:00 (noon) EST. 
+
+Keep an eye on your inbox! 📨",yul533#0,
+"2025-03-14,08:10:09",cwognum,#0,"> and reached out to all failed submissions 
+
+If it was submitted after the second interim leaderboard, at least. Otherwise you already had some feedback!",,
+"2025-03-14,10:46:34",wiwnopgm,#0,I got some submission error here. Can I have some help?,cwognum#0,https://cdn.discordapp.com/attachments/1311539940797972581/1350117913700470845/image.png?ex=6809a60a&is=6808548a&hm=d9a316c4727768ef9854671fc5027e7e78e87addce2bcc3450cb580b25a1a851&
+"2025-03-14,10:53:29",cwognum,#0,"It seems like you're not using the latest version of Polaris. Could that be?
+
+This is a known issue (https://github.com/polaris-hub/polaris/issues/242) and it has been fixed.",,
+"2025-03-14,11:43:30",bartl88,#0,is it correct the deadline is in 17min...? <@437941389838516235> or can i submit till end of the day,cwognum#0,
+"2025-03-14,11:49:21",cwognum,#0,"It's indeed in ~17 min~ 11 min! The deadline is 12:00 (noon) EST. 
+
+I'm seeing a lot of submissions already. Good luck with the final sprint everyone! 🚀",,
+"2025-03-14,12:05:12",longhung25,#0,"Hi Cas, I missed the deadline by 1 minute because there was a mismatch in the dictionary name, is it possible to submit a few minutes late? I am very sorry...",,
+"2025-03-14,12:12:09",cwognum,#0,"⏰  **The deadline has officially passed!**
+
+Congratulations to everyone who submitted! 🎉 
+
+Here's what to expect next: 
+
+- Will evaluate all submissions today. 
+- By the end of today, you will receive an email confirming your submission. 
+- If your submission was incomplete or if evaluation failed, we'll let you know and will give you one final chance to resubmit.
+- We need to have received the resubmission by Monday March 17 12:00 (noon) EST.
+- We will announce the final results soon after",,
+"2025-03-14,12:13:12",cwognum,#0,Hey! I'll send you a DM!,longhung25#0,
+"2025-03-14,12:14:52",bartl88,#0,soon after the resubmission deadline I assume? (17 march EST),cwognum#0,
+"2025-03-14,12:15:31",cwognum,#0,Indeed!,,
+"2025-03-14,12:16:31",bartl88,#0,"perfect, have a nice weekend, good luck to everyone 🍀",,
+"2025-03-14,14:34:07",gpcr,#0,good luck and congrats to all participants. here's the write up on my approach: https://molecular.beauty/blog/2025/03/13/polaris.html,,
+"2025-03-14,14:58:45",oliversun6788,#0,Good luck everyone and I also just want to give a huge shoutout to all the organizers and participants who are super active on github and here to answer all of our questions! Good communication is definitely key to good science and I really appreciate how you all present a real-world dataset with very ample annotations and explanations. Great job!,,
+"2025-03-14,15:19:50",r_ced,#0,"I agree, congratulations to the Polaris team for setting up the competition infrastructure and all the lab scientists who generated these data. Great initiative for advancing science!",,
+"2025-03-14,15:34:19",lexobrien.,#0,"Well, I missed the deadline thinking it was midnight tonight",,
+"2025-03-14,15:34:40",lexobrien.,#0,My model failed to train properly but my approach is here if anyone is interested:,,
+"2025-03-14,15:35:35",lexobrien.,#0,https://github.com/meyresearch/polaris_challenge/blob/main/admet/report.md,,
+"2025-03-14,17:28:36",sina08678,#0,"Hi everyone, especially the Polaris team. This was my first time competing in a drug discovery competition, and I learned a lot. Good luck to you all!",,
+"2025-03-14,17:49:38",vanguard7373174,#0,Just wanted to say many thanks to the Polaris and ASAP teams for organizing this competition - I had a blast and learned a ton.  When's the next one?  🙂,,
+"2025-03-14,18:06:20",cwognum,#0,"📣  **Confirmation emails were sent**
+
+Hey everyone! I've sent out emails to all participants to confirm we received their submission. If you were expecting an email, but didn't receive one, please let me know as soon as possible! 
+
+We're going through the results right now and if we spot any incomplete or failed submissions, you'll hear from us soon. 
+
+Thanks!",,
+"2025-03-14,23:19:33",cwognum,#0,"📥 **Notifications for failed or incomplete submissions sent**
+
+Hi everyone, I just sent out all emails to folks that had an incomplete or failed submission. Please check your inbox (including your spam), because action could be required for your submission to be eligible for the final leaderboard.",,
+"2025-03-15,07:11:46",itstreasonthen.,#0,"On behalf of the ASAP team I want to say **thank you so so much to the participants for your enthusiastic contributions to open science**. It has been amazing to see the community rally around the challenge.
+Hopefully this challenge will provide learnings to the community and also spur further challenges.
+
+I am looking forward to the final leaderboard and examining your approaches in detail. Very exciting!
+
+ We will be writing these up in a paper to which those eligible for the final leaderboard will be invited.
+
+Huge thank you also to the Polaris team without which none of this would have been possible.  Their professionalism and great product have made this a great experience from our perspective. 
+
+This is the first time we have run a competition and we acknowledge there have been a few bumps along the way. This will all be published in aforementioned paper as learnings and hopefully taken into the next one(s). 
+
+Cheers, 
+
+Hugo",,
+"2025-03-15,07:43:11",r_ced,#0,"I was wondering, will the final leaderboard use the conventional MAE or the scaled MAE as the primary metric?",,
+"2025-03-15,10:08:46",cwognum,#0,"Conventional MAE. We felt it was too late to change this still. However, we will provide more granular results. You will be able to see the performance per task.",r_ced#0,
+"2025-03-17,12:16:26",cwognum,#0,"📣  **Deadline for resubmission has passed**
+
+Hi everyone, deadline for resubmission has passed. We have next finalize the results.
+
+We expect to announce these by Wednesday!",,
+"2025-03-17,22:09:16",vladimirchupakhin_41526,#0,"Hey folks, just wonder why it's not automatic?",cwognum#0,
+"2025-03-17,22:14:28",cwognum,#0,"Fair question! 😅
+
+Part of it actually is automated, part of it can’t be, at least not easily (e.g. checking that everyone submitted a valid report), and part of it has simply not been built out yet. This is only the first competition Polaris has ever hosted and we’re still actively developing its features.",vladimirchupakhin_41526#0,
+"2025-03-17,22:15:04",cwognum,#0,"If there are any features you would like to see, we would love to hear it!",,
+"2025-03-17,23:10:17",vladimirchupakhin_41526,#0,"I mean, Kaggle has a **huge **knowledge base on how to do competitions, conceptually there is very little difference, isn't there?",cwognum#0,
+"2025-03-17,23:14:38",cwognum,#0,"Sure, Kaggle is a valuable source of inspiration, but it still takes time and resources to build these features.",vladimirchupakhin_41526#0,
+"2025-03-17,23:16:00",cwognum,#0,Kaggle has been around for almost 15 years and has Google resources!,,
+"2025-03-17,23:17:50",vladimirchupakhin_41526,#0,"Indeed, and gosh I always forget about Google behind Kaggle 😦",cwognum#0,
+"2025-03-18,08:01:03",r_ced,#0,"On the bright side, the delay can build suspense and excitement 😀",,
+"2025-03-18,13:49:25",oliversun6788,#0,"Just wondering if there's any way to get more involved in the competition organization end of things. I really enjoyed this challenge because of the timely feedback and active responses from the organizers, and want to contribute if possible to make this competition run longer lol. I personally will be down to fill out some kind of feedback form when the results come out.
+
+On a separate note, I really have just been using the raw data rather than the preprocessed ones that one can load from polaris. For folks who did that, was the process very smooth? Maybe some feedback/discussion around the data format could be a good angle for reflection?",,
+"2025-03-18,14:13:51",r_ced,#0,"<@586317805515833384> , For the ligand pose, I had issues loading the training set, so I also ended up using the raw pdb files. The jupyter notebook for 3D alignment was very helpful. 
+
+For the potency and ADMET, all went smoothly. I would have preferred if all endpoints were log transformed to avoid subsequent backtransformation. 
+
+Overall, great experience and I really appreciate the rapid response from the organizers.",oliversun6788#0,
+"2025-03-19,11:00:07",cwognum,#0,"🏆  **The Antiviral Competition results are now live** 🏆 
+
+See how you ranked on the leaderboard: https://antiviral.polarishub.io/
+
+In addition, we're releasing two additional resources: 
+- CSV versions of the leaderboards. See attached! 
+- The code that was used to evaluate submissions: https://github.com/asapdiscovery/asap-polaris-blind-challenge-examples/tree/main/evaluation
+
+There is a lot more insights hidden in the data than is captured by the ranking of the competition and we would love for you to explore this with us!",,https://cdn.discordapp.com/attachments/1311539940797972581/1351933262540443659/leaderboards.zip?ex=6809a937&is=680857b7&hm=e46e05b8545de425d1b9ba4f2296a8fab0a2bbd6a96399d64218f8064104b0ad&
+"2025-03-19,11:35:40",cwognum,#0,"> and want to contribute if possible to make this competition run longer lol.
+
+Love the sentiment, but unfortunately this competition is really coming to an end! 
+
+However, we are still planning to write a paper about this competition - to which all participants are invited to contribute - and definitely have the ambition to run additional competitions in the future!",oliversun6788#0,
+"2025-03-19,11:38:11",cwognum,#0,"> I had issues loading the training set
+
+I would be curious to learn more! The data of the ligand pose challenge had a more complex structure (i.e. PDBs and SDFs, rather than just numbers and text), so I can imagine you ran into some additional challenges. If you have some time, would you be open to share your experience through a Github issue or discussion? https://github.com/polaris-hub/polaris",r_ced#0,
+"2025-03-19,11:45:43",cwognum,#0,,,
+"2025-03-19,11:47:40",r_ced,#0,"It was ""Bad pickle format: ENDMOL tag not found"". I didn't investigate further as the raw pdb files were easily accessible, will open a github issue soon.",cwognum#0,
+"2025-03-19,11:52:00",gpcr,#0,"nice, congrats to all",,
+"2025-03-19,11:54:02",gpcr,#0,"degraded the performance of my submission due to my last minute ""enhancements"" 😩",,
+"2025-03-19,11:55:14",r_ced,#0,Same here 😅,,
+"2025-03-19,11:56:29",r_ced,#0,"Sometimes, less is more.",,
+"2025-03-19,11:56:43",gpcr,#0,seems like one candidate made several submissions. at least on the leaderboard i see vemikainen twice. I'd probably remove one of these (doesn't affect the ranking so no one will feel hurt),,
+"2025-03-19,11:58:53",gpcr,#0,how's the collaborative write-up gonna be planned? will be excited to get my baseline methods in there,,
+"2025-03-19,12:05:56",cwognum,#0,"If you saw a drop in performance of just a few percent, it may be because we fixed a bug in the evaluation logic. 
+
+This piece code accidentally wasn't used for the previous interim leaderboard, but it is now:  https://github.com/asapdiscovery/asap-polaris-blind-challenge-examples/blob/main/evaluation/ligand_poses.py#L52-L63",gpcr#0,
+"2025-03-19,12:13:05",gpcr,#0,i saw a drop of >15% success rate in < 2 A pose prediction so i'm pretty sure i have myself to blame <:deflated:913988095303634994>,cwognum#0,
+"2025-03-19,12:23:16",oliversun6788,#0,I know this might be too much to ask for but for the ligand pose challenge is it possible to get a separate statistics for SARS and MERS like what’s been done for the potency challenge? I’ve been using only the SARS training data and ligand MCS there. Would want to see how it transfers to MERS results,,
+"2025-03-19,12:27:08",cwognum,#0,"That's an interesting ask! Makes sense to me!
+
+Should be possible. Probably not today though. Remind me if you don't hear from me within a week.",oliversun6788#0,
+"2025-03-19,13:07:47",azminetoushikwasi,#0,"Looks like, my last minute updates went wrong 😂🙃",,
+"2025-03-19,13:09:08",azminetoushikwasi,#0,"Excited about the writing part. In my task description, I tried to add a lot of details.",,
+"2025-03-19,13:14:41",r_ced,#0,"I ranked #8 in all three challenges, guess I found my lucky number 😂",,
+"2025-03-19,13:18:23",azminetoushikwasi,#0,Congratulations!!,r_ced#0,
+"2025-03-19,14:04:08",humzasalam,#0,"Thank you to everyone who provided feedback throughout the challenge! We’re always looking to improve. If you have any thoughts or ideas, share your feedback here: https://share-eu1.hsforms.com/23XmDlumfQBuN24RmkQBm1Q2efa2f",,
+"2025-03-19,14:06:01",cwognum,#0,,,
+"2025-03-19,14:24:50",hugo_67100,#0,Hi. I am concerned about some negative R^2 values in the ADMET challenge.  R^2 can be only between 0 and 1...,,
+"2025-03-19,14:25:55",r_ced,#0,"In sklearn, r2 can be negative
+
+https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html",,
+"2025-03-19,14:45:25",hugo_67100,#0,"I see. Well, and can we get the actual values of the test sets?",,
+"2025-03-19,15:05:44",gpcr,#0,test data comes on ~the 28th https://discord.com/channels/1181365054021578842/1311539940797972581/1349303650278834196,,
+"2025-03-19,15:08:30",gpcr,#0,negative r2_score is very common. there's a discussion on sklearn github issues that clarifies this,,
+"2025-03-19,15:12:26",gpcr,#0,https://github.com/scikit-learn/scikit-learn/issues/13788,,
+"2025-03-19,15:19:17",hugo_67100,#0,"Thank you. Yes, negative values in ML indicate that the model's performance was detrimental. We are curious to understand why our models performed so poorly despite the test set R and MAE values being optimal.",,
+"2025-03-19,15:25:57",gpcr,#0,one possible reason is that the distribution of some descriptors is quite different for the training data vs the unseen validation data. this may result in overestimated performance on internal test train splits on the train data. this is for example quite pronounced in the linear regression baseline on the leaderboard,,
+"2025-03-19,15:31:13",bartl88,#0,"Congrats to all! Our method ended up second in the ADME leaderbord, maybe just one question: I seem to recall that we were not supposed to use propietary datasets? (e.g. that was the reason we did not do that)",,
+"2025-03-19,15:33:46",bartl88,#0,e.g. it was implicitly mentioned here 🙂,cwognum#0,
+"2025-03-19,15:34:33",bartl88,#0,"Anyway we will try to publish the dataset (pending approval), but exactly that statement was the reason we refrained from using inhouse datasets.",,
+"2025-03-19,15:36:17",r_ced,#0,"In my understanding, proprietary software is allowed (like commercial docking package) but training datasets must be publicly available.",,
+"2025-03-19,15:36:43",bartl88,#0,correct- that's the way I understood it as well.,r_ced#0,
+"2025-03-19,15:41:31",r_ced,#0,But then some commercial ADME predictors are trained on proprietary datasets (subject to interpretation). I personally avoided using proprietary ADME models for this challenge.,,
+"2025-03-19,15:46:08",bartl88,#0,"we avoided using propietary datasets, but not propietary software (as it was mentioned this is OK)",,
+"2025-03-19,15:46:48",bartl88,#0,(here),jonnyhsu#0,
+"2025-03-19,16:56:12",r_ced,#0,"I like that the leaderboard can be sorted by clicking on a metric. 
+
+ I just found that in terms of Pearson R, my SARS potency model ranked  #1  😁",,
+"2025-03-19,23:24:06",proszx_75243,#0,A simple question: when should we submit a paper ourselves to JCIM? When would the special issue begin?,,
+"2025-03-20,02:37:42",itstreasonthen.,#0,We will be updating people on paper plans shortly,,
+"2025-03-20,02:51:41",itstreasonthen.,#0,We need to clarify some administrative things with JCIM first and we need their input into issue structure and results prior to organising the submissions.,,
+"2025-03-20,03:04:50",jenkescheen.,#0,"To help us finalize the design of the submission process with the JCIM editors we need to have a *rough* idea of how many participants would be interested in submitting _their own_ methods/results paper to the special issue (in addition to being a co-author on the summary paper). Note, we'll email you more detailed information on all of this next week.
+
+Can we get a show of hands for this (react with 👍  to this message if so)?",itstreasonthen.#0,
+"2025-03-20,03:31:03",toni9535,#0,Its been a really fun challenge! Thanks for running this. I was just wondering do you have the raw CSV data for the results somewhere?,,
+"2025-03-20,03:32:12",jenkescheen.,#0,"Hi Toni, the leaderboard CSVs can be found here: https://discord.com/channels/1181365054021578842/1311539940797972581/1351933262519337092, the raw data for the test set (i.e. all test labels and context information) will be published soon!",toni9535#0,
+"2025-03-20,03:33:30",toni9535,#0,Thank you! I had missed this!,,
+"2025-03-20,03:35:01",itstreasonthen.,#0,,,
+"2025-03-20,03:39:31",wiwnopgm,#0,How would this paper be structured? Each method from different submissions are mentioned in the paper? Are we going to have a separated group discussing the process?,jenkescheen.#0,
+"2025-03-20,03:42:05",jenkescheen.,#0,"Like I said, we will send out more detailed information next week.",wiwnopgm#0,
+"2025-03-20,03:46:25",r_ced,#0,"I imagine that the summary paper would look like that of CACHE challenges, while the  team submissions would contain method development, retrospective analysis, ablation studies, and lessons learned. 
+
+Indeed, it would be interesting to know JCIM's expectations on such submissions. Let's wait for the official information. 
+
+https://chemrxiv.org/engage/chemrxiv/article-details/67c858e5fa469535b90c4f9a",,
+"2025-03-20,04:51:16",bartl88,#0,how about intermediate leaderbord results?,jenkescheen.#0,
+"2025-03-20,04:51:26",bartl88,#0,Could those be shared?,,
+"2025-03-20,05:15:04",ryan2924,#0,Thanks for organising! It was super fun 🙂,,
+"2025-03-20,05:18:57",gpcr,#0,"yes, and to me this is the first time i saw a truly convincing performance of cofolding/diffusion outperforming traditional methods, which is a really impressive result",,
+"2025-03-20,05:23:43",bartl88,#0,hopefully the code will be published 🙂,gpcr#0,
+"2025-03-20,07:07:05",itstreasonthen.,#0,fine tuning seemed to be key here IIRC,gpcr#0,
+"2025-03-20,12:06:39",cwognum,#0,"I’m also curious what the similarity is between train and test. Would love to see some analysis of this in the paper. SARS and MERS are well known targets, so this may be an “easy” setting. Still impressive! 
+
+https://www.biorxiv.org/content/10.1101/2025.02.03.636309v2",gpcr#0,
+"2025-03-20,12:07:46",cwognum,#0,This is unfortunately not easy to do!,bartl88#0,
+"2025-03-20,12:09:35",gpcr,#0,"imo one of the reasons why it works really well is because the test set molecule are very similar to the train set, consisting of variants of the isoquinoline series from the covid moonshot project, and in general SARS CoV 2 MPro has been very well liganded with a large diversity of molecules. So an ideal ""in domain"" situation for ML approaches",,
+"2025-03-20,12:10:29",gpcr,#0,i think it could be quantified quite well with ECFP Tanimoto as well as MCS tanimoto. I saw in my MCS based aproach MCS tended to be quite large,,
+"2025-03-20,12:11:40",cwognum,#0,The preprint I just shared (from some of the people behind Plinder and CASP) proposes a good similarity metric!,gpcr#0,
+"2025-03-20,12:12:31",gpcr,#0,"yep, you can find me chiming in about rdkfp vs ecfp in their github issues last month! https://github.com/plinder-org/runs-n-poses/issues/1",,
+"2025-03-20,12:14:10",cwognum,#0,This is a fair point to raise… Curious to hear what <@1328384613554585613> and <@377331431246004225> think of this!,itstreasonthen.#0、bartl88#0、jenkescheen.#0,
+"2025-03-20,12:51:13",gpcr,#0,check it out. particular MCES tanimoto show very high similarity,,https://cdn.discordapp.com/attachments/1311539940797972581/1352323610752061613/wHMe2vNaDgcgwAAAABJRU5ErkJggg.png?ex=6809c341&is=680871c1&hm=5e9943ef8f198d6e8d5b50cf871cac7d3f345d7b0a5cb1f64b1490ca6ce0c8e8&
+"2025-03-20,12:56:59",cwognum,#0,"MC(E)S = Maximum Common Edge Substructure, right? But how do you define MCES + Tanimoto? I don’t think I’ve ever seen MCES as a binary fingerprint",gpcr#0,
+"2025-03-20,12:59:42",gpcr,#0,"a/(b+c-a) with a = atom count in mcs, b = atoms in mol1, c = atoms in mol2",,
+"2025-03-20,13:00:18",gpcr,#0,i.e. the intersection (mces) divided by the union (all atoms),,
+"2025-03-20,13:00:24",jenkescheen.,#0,To be honest I don't recall that we restricted participants to only using public datasets or software. <@1093234148212232275> you're very welcome to re-run with your proprietary datasets and DM it to me - I'll see what I can do,bartl88#0、cwognum#0,
+"2025-03-20,14:03:24",oliversun6788,#0,"This is an interesting analysis! I actually break down the molecules in a slightly different way when doing fragment constrained generation and will share the statistics in a few days. In a nutshell, since all of the Mpro inhibitors contain multiple ring structure, I break down the fragments so that each fragment contains one and only one complete ring structure (fused ring counts as one ring structure) and then I search in the training set to see if there are any identical fragments. If I remember it right, more than 80% of the test molecules have at least one identical ring fragments based on my formulation.
+
+I would also suggest maybe checking the MCES similarity between molecules using just their Murcko scaffold (rdkit has an easy function to call to extract murcko scaffold from a molecule)? Usually these are the key part of the molecules and I would expect to see a lot more identical scaffolds between train and test",gpcr#0,
+"2025-03-20,14:11:57",gpcr,#0,i should also note i used rascalMCES (in rdkit) which includes disconnected MCS. this is a bit more flexible than murcko scaffolds where a small difference can result in a different scaffold,,
+"2025-03-20,14:17:16",oliversun6788,#0,"Also just a random note, I was involved in a project that looks into side chain flexibility of Mpro and have some analysis data along that end. Would you think this is worth including in the paper since Mpro has usually a very stable backbone but flexible side chains? <@437941389838516235>",cwognum#0,
+"2025-03-20,14:37:33",jenkescheen.,#0,That sounds super interesting! Did you use that in your models in any way? If so I would urge you to loop in those findings! If not - we'd still love to know more about it over at ASAP!,oliversun6788#0,
+"2025-03-20,14:38:19",jenkescheen.,#0,Just bumping this message so that folks who are interested in writing up their submission into a paper can raise their hands! https://discord.com/channels/1181365054021578842/1311539940797972581/1352176041820684299,,
+"2025-03-20,14:40:45",oliversun6788,#0,"Well in this challenge, I didn't use any ML models at all (on purpose), so I used this side chain method to sample different protein structures for docking. In my first submission, this method only gives me around 10% of success rate, but when I did the fragment based constrained method my final success rate is 50%. It's hard to say if the method itself is useful, for instance, it's definitely better than docking on to just the reference structure alone, but I have a hard time explaining whether the 10% success rate is because of docking or sampling. Anyways, now that we have the test data out, I can do some comparison there!",,
+"2025-03-20,14:43:39",oliversun6788,#0,Thanks for the bumping I totally missed that!,jenkescheen.#0,
+"2025-03-20,14:48:39",r_ced,#0,<@586317805515833384>  Such highly flexible side chains you mentioned could partly explain why traditional rigid docking approach struggled.,oliversun6788#0,
+"2025-03-20,15:18:06",oliversun6788,#0,<@329096597357068301> Are you also using purely non-ML method for this challenge?,r_ced#0,
+"2025-03-20,15:20:39",oliversun6788,#0,"I think just by clicking through the reports, most of the method that outperforms the higher benchmark for the ligand pose challenge uses some variations of AF3/Boltz-1. Also <@377331431246004225>, would you mind giving a brief overview of what the baseline method is about? Does it have any ML components in it?",itstreasonthen.#0,
+"2025-03-20,15:25:18",gpcr,#0,i know user Dodo also submitted a nonML pose entry. he used vina + some kind of substructure alignment. and got something like 20% success rate,,
+"2025-03-20,15:28:37",r_ced,#0,"<@586317805515833384> My ligand pose submission used non-ML approach (62% success rate). 
+
+I think the code for the baseline were disclosed, it used OpenEye docking package.",oliversun6788#0,
+"2025-03-20,15:35:35",oliversun6788,#0,Yea do you happen to know which notebook corresponds to the higher-scoring one? There are two notebooks and two baselines..,,
+"2025-03-20,15:40:17",r_ced,#0,It is likely the OE one,,
+"2025-03-20,15:41:48",oliversun6788,#0,Great! Will look into it! Random quesiton: would people consider Gnina docking to be an ML approach 😂?,,
+"2025-03-20,15:52:11",gpcr,#0,i would,,
+"2025-03-20,18:00:27",itstreasonthen.,#0,Something to consider here also is that ASAP/Moonshot has released lots of crystal structures in PDB so there is also the chance the cofolding models were trained on similar scaffold,cwognum#0,
+"2025-03-20,18:08:34",itstreasonthen.,#0,"its the openeye one, the basic method being choose  N (5) closest references by rascalMCES then dock to each and choose the best scoring pose",oliversun6788#0,
+"2025-03-20,18:09:09",itstreasonthen.,#0,this was basically what we used in production at ASAP but with N ~ 10-20,,
+"2025-03-20,18:10:00",oliversun6788,#0,What’s the docking software if you don’t mind me asking?,,
+"2025-03-20,18:11:38",itstreasonthen.,#0,Openeye,,
+"2025-03-20,18:47:14",itstreasonthen.,#0,I think we will try and repeat the baseline with greater N for the paper and see if it makes a difference as well.,,
+"2025-03-20,21:14:14",oliversun6788,#0,Do you happen to know if they are free to academics by any chance? I don't recall hearing this software before... That's why I was sort of confused when you say the openeye one.,itstreasonthen.#0,
+"2025-03-20,21:16:03",itstreasonthen.,#0,https://www.eyesopen.com/ Common in industry with a free for academics option: https://www.eyesopen.com/academic-licensing,,
+"2025-03-20,21:18:04",oliversun6788,#0,Got it thank you so much! I really appreciate it!,,
+"2025-03-20,21:18:33",oliversun6788,#0,I guess one final question: are all the workflows you use in the baseline accessible to acadmic users?,,
+"2025-03-20,21:18:49",oliversun6788,#0,This looks like such a powerful model!,,
+"2025-03-20,21:19:29",itstreasonthen.,#0,Yep!,,
+"2025-03-20,21:20:11",itstreasonthen.,#0,"The baselines for docking are probably the strongest of the baselines, the rest are very very simple models a medchemist from 1980 might use.",,
+"2025-03-20,21:20:31",itstreasonthen.,#0,e.g linear models of logP etc,,
+"2025-03-20,21:21:11",oliversun6788,#0,Yes this is such a hard baseline to beat without the use of ML... I feel like I really tried a lot of tools and still couldn't beat it.,,
+"2025-03-20,21:21:41",oliversun6788,#0,Thanks again for sharing. I now have a better idea about the baseline!,,
+"2025-03-20,21:22:21",itstreasonthen.,#0,"I wish we had had more participation from experts in traditional docking methods, they would be a better set to compare against.",,
+"2025-03-21,02:09:46",r_ced,#0,"Indeed, I was curious if someone used the Schrodinger's docking package. 
+
+Based on the leaderboard, there are only OpenEye, FlexX, and Vina that got >50% success rate for traditional docking.",itstreasonthen.#0,
+"2025-03-21,02:15:10",r_ced,#0,"My FlexX run simply used N(1) closest neighbor, curious to see if increasing N improves performance.",,
+"2025-03-21,03:26:48",r_ced,#0,"For the potency and ADMET, 
+I'm curious whether other teams observed significant boost after hyperparameter opt. 
+
+In my submissions, I simply used the default settings without hyperparameter tuning.
+
+These models ranked #8 (MAE) and #4 (Pearson R) in both potency and ADMET.  The SARS potency model even ranked #1 in pearsonR.
+
+Curious to hear about other team's experience on hyperparameter opt.",,
+"2025-03-21,09:50:01",bartl88,#0,no problem,cwognum#0,
+"2025-03-21,09:51:39",bartl88,#0,"Unfortunately I don't have the time left to do this, given that next week will be my last week at my current company, im going to prioritize writing - I rather ensure that our public dataset becomes available 🙂",jenkescheen.#0,
+"2025-03-21,10:32:54",proszx_75243,#0,"A feeling that the time seems limited in this challenge often hits me, especially for incorporating more computationally expensive techniques, e.g., free energy calculations and QM/MM treatments. I'm experienced in SAMPL challenges and have employed these expensive treatments previously, but the sample size in SAMPL challenges is much smaller than the current ones (~300). So, in general we cannot finish them all but have to struggle with cheaper/faster alternatives. Although in the current potency subchallenges, we achieve a high score (3rd) with ensemble ML treatments, in general I'm very curious about the possible improvements when incorporating physics-based data into our models.",,
+"2025-03-21,12:17:03",azminetoushikwasi,#0,"I feet the score improvement after hyperparameter changes is not that universal. In some metrics, it increased and in some, I saw it decreased.",r_ced#0,
+"2025-03-21,14:32:32",r_ced,#0,"I agree that sophisticated techniques (FEP, QM/MM) can be challenging given the time constraints and I'm also curious of the performance boost they could bring. 
+
+I guess the challenge tries to simulate a real-life drug discovery program requiring timely decisions on which compounds would be synthesized and assayed.",proszx_75243#0,
+"2025-03-21,14:45:20",gpcr,#0,"there was a team that did abfep, though it didn't work so well for this target",,
+"2025-03-21,14:45:56",gpcr,#0,https://github.com/michellab/polaris-poses-challenge-fegrow-a3fe,,
+"2025-03-21,14:46:30",gpcr,#0,oh yeah a bit more than that,,
+"2025-03-23,09:12:06",proszx_75243,#0,"Oh, it's good to see that someone could finish so many free energy calculations in this blind prediction. They must have distributed a large amount of computational resources on this project.  There could be many pitfalls in affinity calculations based on all-atom modelling, such as the protonation-state determination, the net-charge correction issue (in other words, a type of finite-size artefact that has been discussed extensively in my recent paper with Piero Procacci), the accuracy of binding poses and the accuracy of force fields. I'm not sure whether these are well-studied in the mentioned calculations, but frankly speaking, in most absolute affinity calculations, people cannot really achieve a chemical accuracy performance as stated in many publications. If possible, incorporating existing knowledges and do some type of ML treatment could be the best option.",,
+"2025-03-23,09:37:16",r_ced,#0,"Indeed, FEP calculation is more complicated than it seems. That's why we would use it only in lead opt / finetuning phase where the high cost of biological profiling can justify the long compute hours. 
+
+For hit/lead exploration phase, med chemists may not have enough patience to wait for the calculation to finish. 
+
+I agree, this challenge is also a reality check to the  ""chemical accuracy"" claims for ABFE in many publications.",proszx_75243#0,
+"2025-03-24,06:24:51",.dannycole,#0,"Hi, yes these were fast A3FE calculations, so just a fraction of the time usually run for full ABFE. Unfortunately the input poses to A3FE were not good, we made some improvements later but weren't able to repeat the free energy runs",gpcr#0,
+"2025-03-24,12:36:30",jenkescheen.,#0,"By the way, if anyone is at ACS this week, Ed Griffen (ASAP's lead medicinal chemist) will present on our Mpro work and disclose the preclinical candidate that has resulted from the very projects you've been modeling during this challenge. You can tune in here, it's happening tomorrow noon ET: https://acs.digitellinc.com/live/34/session/552889",,
+"2025-03-24,13:35:26",oliversun6788,#0,"Im at ACS! If anyone else also is and want to chat more about the challenge and science in general, I’m all for it! Maybe we can organize a little get together if there are a lot of us",,
+"2025-03-25,12:27:15",oliversun6788,#0,,,https://cdn.discordapp.com/attachments/1311539940797972581/1354129517567938722/752ef94eba1fbf0e80d8b1bd47074870.jpg?ex=6809bda3&is=68086c23&hm=3d867d62c5808042a5a5c605e547fa5a75acf8673d75da2ec8dcf4325df52551&
+"2025-03-25,19:15:39",vladvin_,#0,"Hey everybody!
+Yesterday, I posted about our method of addressing ADMET prediction problem of this competition. For those who didn't find our report before, it's a single Gemini Flash model fine-tuned with cross-entropy to predict regression values (!) on the competition's data + Biogen ADME dataset from Polaris: https://www.linkedin.com/feed/update/urn:li:activity:7310091890127753216/
+
+We only had a chance to submit to the final leaderboard, and yet we got pretty good MDR1-MDCKII and KSOL performance.
+
+I'm curious, what is the plan of writing an all-participants paper for the JCIM track?",,
+"2025-03-25,20:42:33",itstreasonthen.,#0,Announcement to come on paper plans to come today.,,
+"2025-03-25,20:43:09",itstreasonthen.,#0,Roughly you will all be invited to be authors on a summary paper. + You can submit your own paper to JCIM for a special issue if you like.,,
+"2025-03-26,01:51:00",r_ced,#0,"Thanks for sharing <@440449220059725825> , I'm curious about the GPU hours it took to finetune the Gemini LLM.",vladvin_#0,
+"2025-03-26,10:45:57",jenkescheen.,#0,"All, you should have received an email from me with further details on the scientific write-up phase of this challenge - let us know here if you have any queries and send me a DM if you didn't receive anything (after checking your spam 😉 )",,
+"2025-03-26,10:50:37",.dannycole,#0,"Thanks <@1328384613554585613> , are you happy to include authors who contributed to but didn't actually make the submission (so don't have a polaris user name)? If so, do you want them to fill out the form too?",jenkescheen.#0,
+"2025-03-26,10:51:33",jenkescheen.,#0,Great question - yes and yes!,.dannycole#0,
+"2025-03-26,12:37:13",bartl88,#0,Great !!- filled in and fwded,,
+"2025-03-26,12:37:52",bartl88,#0,When do you anticipate to release the leaderbord test set data? We would like to have it to finalize our first draft of the manuscript,,
+"2025-03-26,17:03:51",vladvin_,#0,"Thanks for asking <@329096597357068301> .
+I don't know how many GPU hours Google Cloud used to fine-tune the model, but here is how much it costs: Gemini 1.5 Flash fine-tuning (over LoRa) is $8 / 1M tokens. I spent 17M tokens for the production run, this is $136 to get the model that predicts all five properties for the in-context few-shot learning scenario. Somewhen on the edge of the competition deadline Google released Gimini 2.0 Flash fine-tuning service to everybody, and it's 2.5x cheaper ($3 / 1M tokens) at the same level of quality (I already tested it on the same benchmark). Now you can fine-tune the same quality model for $51",r_ced#0,
+"2025-03-27,10:31:05",jenkescheen.,#0,We're working on this - hopefully this week but otherwise next week!,bartl88#0,
+"2025-03-28,01:03:45",ryuseiogino_26529,#0,"I attempted the ligand-pose challenge, but unfortunately, my success rate was around 40%😂. Upon reviewing the poses, I found that the average RMSD was 25Å !! This was because all the poses were aligned to SARS_ref, which likely caused all the MERS poses to fail. I have created a version where the coordinates are corrected by aligning to MERS, and I would like to know how successful it was. Is there any way to find out? (Of course, the results won't change, but I am just curious about how well my strategy performed.)",,
+"2025-03-28,02:03:10",r_ced,#0,This should be possible once they release the test set data.,ryuseiogino_26529#0,
+"2025-03-28,02:30:04",ryuseiogino_26529,#0,Thank you. That's true. I am looking forward to the release of the test data.,r_ced#0,
+"2025-03-28,11:16:58",r_ced,#0,"By the way, to those in Europe, anyone attending the Frontiers in Medicinal Chemistry Conference in Germany next week?",,
+"2025-03-28,17:12:47",cwognum,#0,"💾  Hey folks! Unblinded datasets are coming. We're conducting a final review to make sure we didn't make any mistakes in preparing it!
+
+It will probably go live on Monday. Sorry for the delay. I've been travelling for work and that has slowed things down a bit more than I expected.",jenkescheen.#0,
+"2025-03-31,03:38:26",itstreasonthen.,#0,"Hi all! Thanks to the wonderful Polaris folks the full dataset including test data is now live. Find it at the links below! 
+
+https://polarishub.io/datasets/asap-discovery/antiviral-ligand-poses-2025-unblinded
+https://polarishub.io/datasets/asap-discovery/antiviral-potency-2025-unblinded
+https://polarishub.io/datasets/asap-discovery/antiviral-admet-2025-unblinded
+
+ Happy to field any questions as they arise 😄.",,
+"2025-03-31,03:38:36",itstreasonthen.,#0,,,
+"2025-03-31,06:18:56",proszx_75243,#0,Test data,,
+"2025-03-31,07:24:06",itstreasonthen.,#0,"""data from the test / evaluation split"" is probably clearer",,
+"2025-03-31,11:26:16",vladimirchupakhin_41526,#0,"By the way, an interesting use case for ADMET - if we calculate fragment descriptors for train set we got 5479 unique fragments, for test set there are expectedly less - 1524, but overlap between those two is 646 fragments only. IMO that is an indication that the test set was selected using leave-clusters-out or similar approach. And of course indication that ML should be trained in a more robust manner.",,
+"2025-04-01,22:59:02",cwognum,#0,Anyone has done any interesting analyses now that the data has been unblinded? Share it here! Would love to see it! 👀,,
+"2025-04-02,14:34:54",oliversun6788,#0,"Hey <@437941389838516235> , for the declaration of intent, if I have several teammates who contributed to the same final result, can they also fill out the form? If so, should they use my polaris username (I submitted everything) or should they sign up and fill in their own polaris usernames?",cwognum#0,
+"2025-04-02,15:22:27",cwognum,#0,"Definitely! They can fill out the same form and use the username associated with the result they contributed to (so yours, I assume!)",oliversun6788#0,
+"2025-04-03,13:55:55",.dannycole,#0,"Might be an error on our side, but maybe something up with test pose number 90 (indexing from 1). Looks like it's labelled as SARS but the pose is in the MERS pocket?",,https://cdn.discordapp.com/attachments/1311539940797972581/1357413320545796317/Screenshot_2025-04-03_at_15.45.54.png?ex=6809d26b&is=680880eb&hm=c36a716e706661f33866d59d488a4e1dc2ad57f4fa214999ff3e5fd10a7482ff&
+"2025-04-06,11:46:06",r_ced,#0,"For the potency challenge, I compared chemprop (single task vs multitask) against Sklearn_tree (consensus of RF, ExtraTrees, Xgboost, LGBM) and TabPFN. 
+
+In my final submission, I used the median of all these models.  Seems like I should have picked the TabPFN. 😅",cwognum#0,https://cdn.discordapp.com/attachments/1311539940797972581/1358467817950810355/Potency_analysis.png?ex=6809b3fe&is=6808627e&hm=87d1a58672100860ef33761ce406e4c4bf5ffa7cbf47f5b9db35fd2b236def5b&
+"2025-04-06,13:31:25",gpcr,#0,i used tabpfn without any optimization using morgen+rdkit descs for my final potency entry,,
+"2025-04-06,13:32:19",gpcr,#0,it did a mediocre/decent performamnce,,
+"2025-04-06,13:33:17",gpcr,#0,MAE of 0.561,,
+"2025-04-06,13:33:29",r_ced,#0,Did you use the posthoc ensembling extension?,,
+"2025-04-06,13:33:41",gpcr,#0,"nope, i didnt. interesting to see it gives a bit of extra edge",,
+"2025-04-06,13:37:32",r_ced,#0,"Indeed, I was kinda surprised, it gave an MAE of 0.502 which would have been #1 in the leaderboard, with default settings without hyperparameter optimization",,
+"2025-04-06,14:21:27",gpcr,#0,"interestingly,tabpfn performed worse on the admet challenge",,
+"2025-04-06,15:12:52",r_ced,#0,It needs the posthoc ensembling to work properly,,
+"2025-04-07,05:20:42",itstreasonthen.,#0,Very interesting,,
+"2025-04-07,05:21:18",itstreasonthen.,#0,"We’ll get to this soon <@1074628500809601125>, sorry for delay few conferences ATM",.dannycole#0,
+"2025-04-07,06:25:47",gpcr,#0,"perhaps not surprising, but still interesting to see PLIF analysis (in this case in MOE) shows the template alignment strategy was sensible here. basically every molecule makes the same interaction with His166 (imidazole NH) to isoquinoline and Glu169 (backbone NH) to a carbonyl adjacent to the IQ. shown below is the PLIF barcode for the ~~SARS~~ MERS molecules",cwognum#0,https://cdn.discordapp.com/attachments/1311539940797972581/1358749593508249670/image.png?ex=680a11ab&is=6808c02b&hm=24d6f494f34d43c0efa372693be2b623285d39d6419ab55fc9256c1890a31ead&
+"2025-04-07,13:36:30",r_ced,#0,"With such similar interactions, I wonder about the degree of induced fit (which may have caused traditional rigid docking methods to underperform).",gpcr#0,
+"2025-04-07,13:47:14",gpcr,#0,"it would be interesting to see. though i wonder if anyone ran traditional docking algorithms beyond vina? in the past ive seen for some targets vina underperforms (concretely, for one famius kinase, glide XP had 50%+ accuracy and vina around 10%)",,
+"2025-04-07,13:53:23",r_ced,#0,"Based on the reports, someone used Glide. The baseline used OpenEye and I used FlexX (ranked#8). One thing I did not explore yet is increasing N for nearest neighbor template. I simply used the minimum N(1).",,
+"2025-04-07,13:54:31",oliversun6788,#0,"I've been studying this target for quite a while now. For the SARS case, almost all potent ligands have h-bond interaction with the sidechain of H163, h-bond interaction with the backbone of E166, and pi-caption/pi-pi stacking with the sidechain of H41. I used this as a filter for all my docked pose and it seems to be effective, but the problem with docking in this case is more so that the sampling power is not strong enough to extract such poses even given the correct protein structure...",,
+"2025-04-07,16:43:58",itstreasonthen.,#0,The baseline uses openeye with 5 closest neighbours then picks best scoring,r_ced#0,
+"2025-04-08,12:20:50",cwognum,#0,"I love this! 
+
+One thing that annoys me about ML research in Drug Discovery is grandiose claims of having ""solved"" drug discovery. I would love for us to clearly characterize the problem this competition presented, e.g. by analyzing the distribution shifts between train and test (e.g. k-NN ECFP + Tanimoto distance from test to train). This will help for more nuanced claims: We're not solving all of drug discovery, but have identified some techniques that work well within this specific scope.
+
+Any ideas on how we could do this for these three challenges? 👀",gpcr#0,
+"2025-04-08,12:48:30",cwognum,#0,"Some random thoughts: 
+
+- To characterize the chemical space, we could compute the distance from test to train:
+  - For potency and ADMET: ECFP + Tanimoto or MCS seems to be a reasonable distance measure.
+  - For poses, we can use the Runs 'N Poses metric? https://www.biorxiv.org/content/10.1101/2025.02.03.636309v2.abstract
+    - I like the barclode plot <@562621019454701568> did as well, and I think that would serve as a qualitative counter-part to this more quantitive similarity measure. 
+- Would love for us to get a medchem perspective in there to provide context on how (dis)similar paired examples are. Maybe identify some chemical series?
+- At least for ADMET and Potency, we can also show the difference in the target space distribution.
+- A challenge here is what to do with other datasets that people used to (pre-)train methods. Maybe we can try our best to query related datasets from PDB (Plinder?) and ChEMBL. 
+
+I think all of the above serves as a basis for carefully understanding model performance and can really help refine future competitions.",gpcr#0,
+"2025-04-08,13:30:04",oliversun6788,#0,"On top of that, for ligand pose challenge, I personally think that it is extremely important to analyze the protein side chain flexibility. Based on my experience working with the target, for the key residue His41 (SARS), you can either have either sandwich or T-shaped pi stacking with the ligand. Also, the free loop area (L167-H172) that is very close to the binding pocket demonstrates some really significant side chain flexibility with different ligand (and during MD simulations).
+
+Another potential thing that is kind of out of the scope of this project is the mutation analysis. I don't exactly know if this is something that the organizer is interested in pursuing but people have seen some potential mutations on Mpros that make ensitrelvir 1000x less potent. If the ultimate end goal is to do drug discovery, maybe some analysis on mutated proteins could be at least something to bring up if an in-depth analysis is not planned.",,
+"2025-04-08,13:41:35",cwognum,#0,"Would you have the time to pull an example together of how you would do such an analysis? I would consider doing so myself, but I lack the expertise and experience. You clearly have thought about this a lot!
+
+No worries if not. I appreciate you can't spend too much time on this.",oliversun6788#0,
+"2025-04-08,13:45:15",oliversun6788,#0,Happily! But I probably won't have time until two weeks after to do so. Is that too late?,,
+"2025-04-08,13:59:22",cwognum,#0,"No, I don't think so. This will all feed into the paper. I forgot the exact timeline <@1328384613554585613> and <@377331431246004225> had in mind for this, but I'm pretty sure it's longer than 2 weeks! 😄",oliversun6788#0、itstreasonthen.#0、jenkescheen.#0,
+"2025-04-08,14:00:51",oliversun6788,#0,Oh great! I can try to put something together then. Excited to contribute!!,,
+"2025-04-08,14:20:34",r_ced,#0,"In your MD simulations, do you see ""happy waters"" interacting with the ligand?",oliversun6788#0,
+"2025-04-08,15:11:25",oliversun6788,#0,haha yea there's definitely at least one occasion of a very stable water bridge between Mpro and ensitrelvir that I see during the simulation,,
+"2025-04-08,16:09:34",r_ced,#0,"Cool, I wonder to what extent water networks influence the  ligand pose for this target.",oliversun6788#0,
+"2025-04-08,16:15:41",oliversun6788,#0,"More in-depth analysis will be needed. I can only comment on my observations (sorry I'm not an expert on water-induced effects), which is that water does contribute some some hydrogen bonding networks for this target.",,
+"2025-04-08,16:20:40",r_ced,#0,"Indeed, displacing ""unhappy waters"" is one common strategy in medchem to improve potency.",,
+"2025-04-08,16:32:31",r_ced,#0,"Same! Anyone who claims to have ""solved"" drug discovery doesn't do real drug discovery.",cwognum#0,
+"2025-04-08,16:42:04",cwognum,#0,"ℹ️  FYI - For those using the evaluation code we released, there was a mistake: https://github.com/asapdiscovery/asap-polaris-blind-challenge-examples/pull/17
+
+Note that this *_doesn't_* affect the official competition results. It's a mistake that crept in when I polished the code to be released publicly.",,
+"2025-04-09,00:32:13",r_ced,#0,"Indeed, I noticed this when I tried to replicate my leaderboard score. After fixing the indices, I got exactly the same results (with bootstrapping) which I used to generate this plot.",cwognum#0,
+"2025-04-09,00:32:29",r_ced,#0,,,https://cdn.discordapp.com/attachments/1311539940797972581/1359385459435901128/Potency_analysis_1.png?ex=6809bedd&is=68086d5d&hm=80119af8aa7feb7cd0377b7a07f6dad3ee4dec4168901377de7865c4c9a49011&
+"2025-04-09,02:07:44",itstreasonthen.,#0,<@329096597357068301> any thoughts about why chemprop ST outperformed MT here? Some others saw the opposite,r_ced#0,
+"2025-04-09,08:18:30",r_ced,#0,It's likely that MT requires hyperparameter optimization to work well (I simply used the default settings in all these models).,itstreasonthen.#0,
+"2025-04-09,14:12:31",ernestglukhov2183,#0,"Hi, could you check sample 89 with smiles `O=C(Cc1cncc2ccccc12)N(Cc1cccc(Cl)c1)[C@]12C[N@@H+](C3CC3)[C@H](C1)C2` for pose prediction?
+It is assigned as SARS but we believe that your pose is aligned with Mers, which gives RMSD around 50A for our predictions.",,
+"2025-04-09,14:18:00",cwognum,#0,"Hi <@749975689398321202> , you're raising the same issue as the <@1074628500809601125> ☝️ 
+
+I'm not the best one to comment here, but I believe that specific ligand was bound to the B chain of SARS-CoV-2. This should've been excluded from the test set, but unfortunately slipped through. Sorry about that! 
+
+For the results that we include in the JCIM article we're preparing, we will fix this! 
+
+ping <@1328384613554585613> and <@377331431246004225> for further details, if any.",itstreasonthen.#0、ernestglukhov2183#0、jenkescheen.#0、.dannycole#0,
+"2025-04-09,15:51:44",itstreasonthen.,#0,We will exclude this one!,,
+"2025-04-09,16:02:54",r_ced,#0,<@1329659234157203486>  Do you have an update on this? Curious to see Glide's performance,ryuseiogino_26529#0,
+"2025-04-10,15:51:01",cwognum,#0,"Had some spare minutes (literally just minutes), and tinkered a bit to try start characterizing the difference between the train and test set for the potency challenge. Not sure how useful this ends up being, but it's a start! Hope it inspires some ideas.
+
+Three plots:
+1. The three train molecules closest to train. 
+2. The three test molecules furthest from train.
+3. The distance distribution.",,https://cdn.discordapp.com/attachments/1311539940797972581/1359979003280363561/image.png?ex=6809ed65&is=68089be5&hm=5b7f22dc4ab522a6813c3fb9814a8ffcd5cf51b25c3c74e63149d1d17a9a71d9&
+"2025-04-10,15:54:14",cwognum,#0,"Given the importance of stereochemistry in binding, it feels wrong to use the Tanimoto distance. For example, there is a lot of test molecules with distance 0 to the train set. However, I am not aware of any robust alternatives for the distance measure. Thoughts?",,
+"2025-04-10,16:16:34",gpcr,#0,imo for this purpose you can just calculate your morgan fingerprints with CIP flags,,
+"2025-04-10,16:16:46",gpcr,#0,you put something like useChirality=True in your MorganGenerator,,
+"2025-04-10,22:36:41",ryuseiogino_26529,#0,"Thank you for your question. (Although I’m still relatively new to Glide training, I hope this information is helpful.)
+To get straight to the point, the success rate improved from 40% to 70%, and the mean RMSD dropped from 25Å to 2.0Å.
+These improvements were achieved without re-docking; I simply applied the transformation matrix used to superimpose the reference SARS protein onto the MERS protein.
+The RMSD distribution is shown below. Many cases narrowly missed the threshold, and when the success criterion is relaxed from 2.0Å to 2.5Å, the success rate increases to 84%.
+
+For more details, please refer to the following link:
+https://github.com/ryusei-ogino/antiviral-challenge/blob/main/analysis.md",r_ced#0,https://cdn.discordapp.com/attachments/1311539940797972581/1360081092484534544/432573015-f93211a6-6c22-4a81-9e57-43ce2a958c23.png?ex=6809a3b9&is=68085239&hm=1ce2f26731326dccbe3491796a46463e2c48c18d99c8cfd9a6ffa048070f302d&
+"2025-04-10,22:42:57",ryuseiogino_26529,#0,"That said, even with these improvements, the success rate still doesn’t match the top-performing methods — I’m genuinely impressed by how powerful generative AI can be.",,
+"2025-04-11,02:12:13",r_ced,#0,"Thanks for sharing <@1329659234157203486>, this partly confirms that cofolding methods did outperform classical docking (Glide, OpenEye, FlexX, Vina)  in this challenge. 
+
+My open question is at what train-test similarity threshold does classical docking start to outperform AI methods. This could serve as a rough rule of thumb in deciding which one to use.",ryuseiogino_26529#0,
+"2025-04-15,17:13:28",oliversun6788,#0,Is the raw data for unblinded test set available somewhere?,,
+"2025-04-15,17:55:28",gpcr,#0,linked here https://discord.com/channels/1181365054021578842/1311539940797972581/1356170762037497886,,
+"2025-04-15,18:19:41",oliversun6788,#0,"Thanks, <@562621019454701568>! I was more referring to the raw PDB files for the ligand pose challenge. All of my codes of analysis requires input in PDB format but I don't see those files in that link. The raw training data was made available before so I just thought maybe they would do the same for the testing as well",gpcr#0,
+"2025-04-15,19:28:21",itstreasonthen.,#0,I have been meaning to host the PDB files somewhere,,
+"2025-04-15,19:28:35",itstreasonthen.,#0,I will try and get to it ASAP,,
+"2025-04-15,19:50:13",oliversun6788,#0,Thank you <@377331431246004225> I appreciate it!,itstreasonthen.#0,
+"2025-04-16,00:51:43",r_ced,#0,I also need the raw PDB files for my workflow.,oliversun6788#0,
+"2025-04-16,02:29:24",itstreasonthen.,#0,Remind me if I don't get to it in a few days 😉,,
